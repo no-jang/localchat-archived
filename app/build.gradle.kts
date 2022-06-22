@@ -43,5 +43,5 @@ testing {
 
 application {
     // Define the main class for the application.
-    mainClass.set("de.localchat.server.AppKt")
+    mainClass.set("de.localchat.app.App")
 }
