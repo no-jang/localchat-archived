@@ -9,5 +9,8 @@ RUN apk update
 RUN apk add --no-cache openjdk17
 RUN apk add --no-cache npm
 
+# Set JAVA_HOME
+ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk
+
 # Install pnpm via npm
 RUN npm install -g pnpm
