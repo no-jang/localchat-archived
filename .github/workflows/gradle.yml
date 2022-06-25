@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: artifact-${{ env.CI_REF_NAME_SLUG }}-${{ env.CI_SHA_SHORT }}
-        path: build/libs/*.jar
+        path: projects/backend/build/distributions/*
