@@ -3,3 +3,7 @@ plugins {
 
     application
 }
+
+dependencies {
+    implementation(libs.netty.http2)
+}

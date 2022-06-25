@@ -1,0 +1,5 @@
+[versions]
+netty = "5.0.0.Alpha2"
+
+[libraries]
+netty-http2 = { module = "io.netty:netty-codec-http2", version.ref = "netty" }
