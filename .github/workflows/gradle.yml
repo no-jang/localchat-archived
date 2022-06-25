@@ -1,0 +1,42 @@
+name: gradle-ci
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        
+    - name: Build
+      uses: gradle/gradle-build-action@v2.2.1
+      with:
+        arguments: build
+
+    - name: Get Branch
+      id: branch
+      run: echo "git_branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_BRANCH
+
+    - name: Get Commit
+      id: commit
+      run: echo "git_hash=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_HASH
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: artifact-${{ env.branch }}-${{ env.commit }}
+        path: build/libs/*.jar
