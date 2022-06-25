@@ -28,16 +28,11 @@ jobs:
       with:
         arguments: build
 
-    - name: Get Branch
-      id: branch
-      run: echo "git_branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_BRANCH
-
-    - name: Get Commit
-      id: commit
-      run: echo "git_hash=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_HASH
+    - name: Variables
+      uses: FranzDiebold/github-env-vars-action@v2.3.1
 
     - name: Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: artifact-${{ env.branch }}-${{ env.commit }}
+        name: artifact-${{ env.CI_REF_NAME_SLUG }}-${{ env.CI_SHA_SHORT }}
         path: build/libs/*.jar
