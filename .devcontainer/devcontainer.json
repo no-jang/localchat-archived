@@ -4,5 +4,9 @@
 	"forwardPorts": [],
 	"build": {
 		"dockerfile": "Dockerfile"
-	}
+	},
+	"extensions": [
+		"vscjava.vscode-java-pack",
+		"vscjava.vscode-gradle"
+	]
 }
