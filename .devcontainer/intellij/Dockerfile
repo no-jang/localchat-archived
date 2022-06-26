@@ -1,10 +1,6 @@
-FROM jetbrains/projector-idea-u
+FROM alpine
 
-USER root
-
-RUN apt-get update \
-    && apt-get install -y \
-    build-essential \
-    ca-certificates \
-    git \
-    openjdk17-jdk
+RUN apk update
+RUN apk add --no-cache alpine-sdk
+RUN apk add --no-cache openjdk17
+RUN apk add --no-cache npm
