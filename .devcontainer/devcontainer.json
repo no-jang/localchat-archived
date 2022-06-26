@@ -1,0 +1,8 @@
+{
+	"name": "Alpine",
+	"remoteUser": "vscode",
+	"forwardPorts": [],
+	"build": {
+		"dockerfile": "Dockerfile"
+	}
+}
