@@ -11,5 +11,5 @@ application {
 }
 
 dependencies {
-    implementation("io.netty:netty5-codec-http2:5.0.0.Alpha2")
+    implementation("org.apache.spark:spark-core_2.13:3.3.0")
 }
