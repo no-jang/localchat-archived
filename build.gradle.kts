@@ -11,5 +11,5 @@ application {
 }
 
 dependencies {
-    implementation("org.apache.spark:spark-core_2.13:3.3.0")
+    implementation("com.sparkjava:spark-core:2.9.3")
 }
