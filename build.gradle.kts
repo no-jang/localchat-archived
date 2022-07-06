@@ -2,6 +2,9 @@ plugins {
     application
 }
 
+group = "de.localchat"
+version = "0.1.0-alpha.1"
+
 repositories {
     mavenCentral()
     maven("https://jitpack.io")
