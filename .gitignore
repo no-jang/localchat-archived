@@ -5,3 +5,6 @@ build
 ### Visual Studio Code ###
 .settings
 bin
+
+### Intellij Idea ###
+.idea
