@@ -26,7 +26,7 @@ dependencies {
 
     // Networking
     implementation("io.projectreactor.netty:reactor-netty-core:1.0.20")
-    implementation("io.projectreactor.netty:reactor-netty-http:1.0.20")
+    //implementation("io.projectreactor.netty:reactor-netty-http:1.0.20")
 
     // Logger
     implementation("com.github.tinylog-org.tinylog:tinylog-api:v3.0-SNAPSHOT")
