@@ -22,12 +22,16 @@ public class Main {
         DiscoveryBackend backend = new UDPDiscoveryBackend(listener);
         backend.broadcastRequest(new DefaultDiscoveryRequest("localhost", 78565));
 
+        staticFiles.location("/public");
+
         get("/posts", (req, res) -> {
-            return "Hello Sparkingly World!";
+            res.redirect("composer.html");return null;
         });
-        get("/test", "application/json", (req, res) -> {
-            String id = req.queryParams("id");
-            return "HI " + id;
+        get("/send", (req, res) -> {
+            String message = req.queryParams("message");
+            System.out.println(message);
+            return "HI " + message;
         });
+
     }
 }
