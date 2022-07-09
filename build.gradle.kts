@@ -1,5 +1,6 @@
 plugins {
     application
+    kotlin("jvm") version "1.7.10"
 
     id("com.github.ben-manes.versions") version "0.42.0"
 }
@@ -23,17 +24,16 @@ java {
 }
 
 dependencies {
+    // Kotlin
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
+
     // Web Server
     implementation("com.sparkjava:spark-core:2.9.3")
 
-    // Networking
-    implementation("io.projectreactor.netty:reactor-netty-core:1.0.20")
-    //implementation("io.projectreactor.netty:reactor-netty-http:1.0.20")
-
     // Logger
     implementation("com.github.tinylog-org.tinylog:tinylog-api:v3.0-SNAPSHOT")
+    implementation("com.github.tinylog-org.tinylog:tinylog-api-kotlin:v3.0-SNAPSHOT")
     implementation("com.github.tinylog-org.tinylog:tinylog-impl:v3.0-SNAPSHOT")
-    implementation("com.github.tinylog-org.tinylog:tinylog-core-modern:v3.0-SNAPSHOT")
     implementation("com.github.tinylog-org.tinylog:slf4j-tinylog:v3.0-SNAPSHOT")
 
     // Testing
