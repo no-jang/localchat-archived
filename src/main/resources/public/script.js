@@ -1,27 +1,27 @@
 var nameInput = document.getElementById('message');
-
+let id = id => document.getElementById(id);
 
 let ws = new WebSocket("ws://" + location.hostname + ":" + location.port + "/ws");
-ws.onmessage = msg => console.log(msg);
+ws.onmessage = msg => updateChat(msg);
 ws.onclose = () => alert("WebSocket connection closed");
 
 
 document.querySelector('form').addEventListener('submit', function (e) {
-
     //prevent the normal submission of the form
     e.preventDefault();
-
-    console.log(nameInput.value);
-
     if (nameInput.value !== "") {
         ws.send(nameInput.value);
     }
-    
     nameInput.value = '';
 
 });
 
-console.log('script.js loaded');
+function updateChat(msg) {
+    let data = JSON.parse(msg.data);
+    id("chat").insertAdjacentHTML("afterbegin", data.userMessage);
+    console.log(data.userMessage);
+};
+
 
 const btn = document.querySelector(".btn-toggle");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");

@@ -24,6 +24,12 @@ dependencies {
     // Web Server
     implementation("io.javalin:javalin:4.6.4")
 
+    //json
+    implementation("org.json:json:20220320")
+
+    //java to html
+    implementation("com.j2html:j2html:1.5.0")
+
     // Networking
     implementation("io.projectreactor.netty:reactor-netty-core:1.0.20")
     //implementation("io.projectreactor.netty:reactor-netty-http:1.0.20")
