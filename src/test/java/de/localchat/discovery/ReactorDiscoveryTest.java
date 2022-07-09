@@ -1,19 +1,13 @@
-package de.localchat;
+package de.localchat.discovery;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOption;
-import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.InternetProtocolFamily;
 import io.netty.util.NetUtil;
-import io.netty.util.internal.SocketUtils;
 import org.tinylog.Logger;
 import reactor.core.publisher.Flux;
-import reactor.core.scheduler.Schedulers;
 import reactor.netty.Connection;
 import reactor.netty.resources.LoopResources;
-import reactor.netty.udp.UdpClient;
 import reactor.netty.udp.UdpServer;
 
 import java.net.*;
@@ -23,9 +17,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 
-public class Test3 {
+public class ReactorDiscoveryTest {
     public static final String MULTICAST_ADDRESS = "224.0.2.60";
     public static final int MULTICAST_PORT = 4445;
 

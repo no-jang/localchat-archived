@@ -1,5 +1,7 @@
 plugins {
     application
+
+    id("com.github.ben-manes.versions") version "0.42.0"
 }
 
 group = "de.localchat"
@@ -33,4 +35,7 @@ dependencies {
     implementation("com.github.tinylog-org.tinylog:tinylog-impl:v3.0-SNAPSHOT")
     implementation("com.github.tinylog-org.tinylog:tinylog-core-modern:v3.0-SNAPSHOT")
     implementation("com.github.tinylog-org.tinylog:slf4j-tinylog:v3.0-SNAPSHOT")
+
+    // Testing
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.0-RC1")
 }

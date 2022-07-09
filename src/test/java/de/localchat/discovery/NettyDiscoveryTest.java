@@ -1,30 +1,19 @@
-package de.localchat;
+package de.localchat.discovery;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
-import io.netty.channel.epoll.EpollDatagramChannel;
-import io.netty.channel.epoll.EpollEventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.DatagramChannel;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.InternetProtocolFamily;
 import io.netty.channel.socket.nio.NioDatagramChannel;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import reactor.netty.ByteBufMono;
-import reactor.netty.Connection;
-import reactor.netty.resources.LoopResources;
-import reactor.netty.udp.UdpClient;
-import reactor.netty.udp.UdpServer;
 
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 
-public class Test {
+public class NettyDiscoveryTest {
     public static final String MULTICAST_ADDRESS = "224.0.2.60";
     public static final int MULTICAST_PORT = 4445;
 

@@ -1,4 +1,4 @@
-package de.localchat;
+package de.localchat.discovery;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -7,7 +7,7 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.nio.charset.StandardCharsets;
 
-public class Test2 {
+public class VanillaJavaDiscoveryTest {
     public static class LanServerDetector extends Thread {
         private final InetAddress multicastAddress;
         private final MulticastSocket socket;
