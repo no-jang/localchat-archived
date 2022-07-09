@@ -3,6 +3,7 @@ package de.localchat;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.epoll.EpollDatagramChannel;
 import io.netty.channel.epoll.EpollEventLoopGroup;
@@ -57,8 +58,8 @@ public class Test {
                             return new NioDatagramChannel(InternetProtocolFamily.IPv4);
                         }
                     })
-                    .localAddress(localAddress, groupAddress.getPort())
-                    .option(ChannelOption.IP_MULTICAST_IF, ni)
+                    ///.localAddress(localAddress, groupAddress.getPort())
+                    //.option(ChannelOption.IP_MULTICAST_IF, ni)
                     .option(ChannelOption.SO_REUSEADDR, true)
                     .handler(new ChannelInitializer<NioDatagramChannel>() {
                         @Override
@@ -69,7 +70,13 @@ public class Test {
 
             NioDatagramChannel ch = (NioDatagramChannel)b.bind(groupAddress.getPort()).sync().channel();
             ch.joinGroup(groupAddress, ni).sync();
-            ch.closeFuture().await();
+
+            while (true) {
+                ch.writeAndFlush(new DatagramPacket(Unpooled.copiedBuffer("Hello World".getBytes(StandardCharsets.UTF_8)), groupAddress));
+                Thread.sleep(1500L);
+            }
+
+            //ch.closeFuture().await();
         } catch (InterruptedException | SocketException e) {
             e.printStackTrace();
         } finally {

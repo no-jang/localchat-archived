@@ -16,7 +16,7 @@ public class Test2 {
             super("LanServerDetector");
             this.multicastAddress = InetAddress.getByName("224.0.2.60");
             this.socket = new MulticastSocket(4445);
-            this.socket.setSoTimeout(5000);
+            this.socket.setSoTimeout(60000);
             this.socket.joinGroup(multicastAddress);
         }
 
@@ -79,10 +79,10 @@ public class Test2 {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         LanServerDetector detector = new LanServerDetector();
-        LanServerPinger pinger = new LanServerPinger();
+        //LanServerPinger pinger = new LanServerPinger();
 
         detector.start();
-        Thread.sleep(1000L);
-        pinger.start();
+        //Thread.sleep(1000L);
+        //pinger.start();
     }
 }
