@@ -1,26 +1,35 @@
 body {
-    --text-color: #363636;
+    --text-color: #2c2c2c;
+    --text-color-alt: #424242;
     --bkg-color: #eeeeee;
+    --bkg-color-alt: #cacaca;
     --border-color: #696969;
 }
 body.dark-theme {
     --text-color: #eeeeee;
+    --text-color-alt: #cacaca;
     --bkg-color: #262626;
+    --bkg-color-alt: #333333;
     --border-color: #696969;
 }
 
 @media (prefers-color-scheme: dark) {
     body {
         --text-color: #eeeeee;
+        --text-color-alt: #cacaca;
         --bkg-color: #262626;
+        --bkg-color-alt: #333333;
         --border-color: #696969;
     }
     body.light-theme {
-        --text-color: #363636;
+        --text-color: #2c2c2c;
+        --text-color-alt: #424242;
         --bkg-color: #eeeeee;
+        --bkg-color-alt: #cacaca;
         --border-color: #696969;
     }
 }
+
 
 input {
     border: 1px solid var(--border-color);
@@ -37,13 +46,52 @@ body {
     color: var(--text-color);
 }
 
+.chat {
+    width: 100%;
+    max-height: 80%;
+    overflow-y: scroll;
+    position: fixed;
+    left: 0px;
+    bottom: 55px;
+}
+
+.message {
+    width: fit-content;
+    background: var(--bkg-color-alt);
+    border-radius: 10px;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.sender {
+    font-size: small;
+    color: var(--text-color-alt);
+}
+
+.timestamp {
+    font-size: x-small;
+}
+
 @media (pointer: none), (pointer: coarse) {
     body {
-        font-size: 4vw;
+        font-size: 3.5vw;
     }
     input {
+        border-radius: 30px;
         padding: 30px;
         font-size: 3.5vw;
+    }
+    .chat {
+        bottom: 154px;
+    }
+    .message {
+        border-radius: 30px;
+    }
+    .sender {
+        font-size: x-large;
+    }
+    .timestamp {
+        font-size: medium;
     }
 }
 .footer {

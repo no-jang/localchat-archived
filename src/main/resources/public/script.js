@@ -3,7 +3,7 @@ let id = id => document.getElementById(id);
 
 let ws = new WebSocket("ws://" + location.hostname + ":" + location.port + "/ws");
 ws.onmessage = msg => updateChat(msg);
-ws.onclose = () => alert("WebSocket connection closed");
+//ws.onclose = () => alert("WebSocket connection closed");
 
 
 document.querySelector('form').addEventListener('submit', function (e) {
@@ -13,12 +13,14 @@ document.querySelector('form').addEventListener('submit', function (e) {
         ws.send(nameInput.value);
     }
     nameInput.value = '';
+    
 
 });
 
 function updateChat(msg) {
     let data = JSON.parse(msg.data);
-    id("chat").insertAdjacentHTML("afterbegin", data.userMessage);
+    id("chat").insertAdjacentHTML("beforeend", data.userMessage);
+    id("chat").scrollTop = id("chat").scrollHeight;
     console.log(data.userMessage);
 };
 

@@ -77,10 +77,10 @@ public class Main {
     }
 
     private static String createHtmlMessageFromSender(String sender, String message) {
-        return article(
-                b(sender + " says:"),
-                span(attrs(".timestamp"), new SimpleDateFormat("HH:mm:ss").format(new Date())),
-                p(message)
+        return div(attrs(".message"),
+                div(attrs(".sender"), sender),
+                div(attrs(".text"), message),
+                div(attrs(".timestamp"), new SimpleDateFormat("HH:mm:ss").format(new Date()))
         ).render();
     }
 
