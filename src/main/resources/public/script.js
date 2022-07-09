@@ -1,27 +1,24 @@
 var nameInput = document.getElementById('message');
 
+
+let ws = new WebSocket("ws://" + location.hostname + ":" + location.port + "/ws");
+ws.onmessage = msg => console.log(msg);
+ws.onclose = () => alert("WebSocket connection closed");
+
+
 document.querySelector('form').addEventListener('submit', function (e) {
 
     //prevent the normal submission of the form
     e.preventDefault();
 
     console.log(nameInput.value);
-    httpGetAsync("http://localhost:4567/send?message=" + nameInput.value, function (response) {
-        console.log(response);
-    });
-    
-    message.value = '';
 
-    function httpGetAsync(theUrl, callback)
-    {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() { 
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                callback(xmlHttp.responseText);
-        }
-        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-        xmlHttp.send(null);
+    if (nameInput.value !== "") {
+        ws.send(nameInput.value);
     }
+    
+    nameInput.value = '';
+
 });
 
 console.log('script.js loaded');

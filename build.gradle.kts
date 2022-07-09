@@ -22,7 +22,7 @@ java {
 
 dependencies {
     // Web Server
-    implementation("com.sparkjava:spark-core:2.9.3")
+    implementation("io.javalin:javalin:4.6.4")
 
     // Networking
     implementation("io.projectreactor.netty:reactor-netty-core:1.0.20")

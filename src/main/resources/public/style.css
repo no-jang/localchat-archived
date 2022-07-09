@@ -9,18 +9,6 @@ body.dark-theme {
     --border-color: #696969;
 }
 
-
-input {
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    color: var(--text-color);
-    padding: 10px;
-    margin: 0.5em;
-    font-family: 'Open Sans', sans-serif;
-    background-color: var(--bkg-color);
-}
-
-
 @media (prefers-color-scheme: dark) {
     body {
         --text-color: #eeeeee;
@@ -34,12 +22,20 @@ input {
     }
 }
 
+input {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-color);
+    padding: 10px;
+    margin: 0.5em;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bkg-color);
+}
+
 body {
     background: var(--bkg-color);
     color: var(--text-color);
 }
-
-
 
 @media (pointer: none), (pointer: coarse) {
     body {

@@ -8,7 +8,8 @@ import de.localchat.discovery.udp.UDPDiscoveryBackend;
 
 import java.io.IOException;
 
-import static spark.Spark.*;
+import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -22,16 +23,32 @@ public class Main {
         DiscoveryBackend backend = new UDPDiscoveryBackend(listener);
         backend.broadcastRequest(new DefaultDiscoveryRequest("localhost", 78565));
 
-        staticFiles.location("/public");
+        Javalin app = Javalin.create(config -> {
+            config.addStaticFiles("/public", Location.CLASSPATH);
+        }).start(7070);
 
-        get("/posts", (req, res) -> {
-            res.redirect("composer.html");return null;
-        });
-        get("/send", (req, res) -> {
-            String message = req.queryParams("message");
+        app.get("/send", ctx -> {
+            String message = ctx.queryParam("message");
+            ctx.result("Hello: " + message);
             System.out.println(message);
-            return "HI " + message;
+        });
+
+        app.ws("/ws", ws -> {
+            ws.onConnect(ctx -> {
+                broadcastMessage("WS connected");
+            });
+            ws.onClose(ctx -> {
+                broadcastMessage("WS disconnected");
+            });
+            ws.onMessage(ctx -> {
+                broadcastMessage(ctx.message());
+            });
         });
 
     }
+
+    private static void broadcastMessage(String message) {
+        System.out.println(message);
+    }
+
 }
