@@ -6,7 +6,11 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.InternetProtocolFamily;
+import io.netty.util.NetUtil;
+import io.netty.util.internal.SocketUtils;
+import org.tinylog.Logger;
 import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Schedulers;
 import reactor.netty.Connection;
 import reactor.netty.resources.LoopResources;
 import reactor.netty.udp.UdpClient;
@@ -14,52 +18,100 @@ import reactor.netty.udp.UdpServer;
 
 import java.net.*;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Enumeration;
+import java.util.Random;
+import java.util.concurrent.CountDownLatch;
 
 public class Test3 {
     public static final String MULTICAST_ADDRESS = "224.0.2.60";
     public static final int MULTICAST_PORT = 4445;
 
-    public static class ServerMulticastHandler extends SimpleChannelInboundHandler<DatagramPacket> {
-        @Override
-        protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
-            ByteBuf content = msg.content();
-            System.out.println(content.toString(StandardCharsets.UTF_8));
-        }
+    public static void main(String[] args) throws SocketException, UnknownHostException {
+        final Random rndm = new Random();
+        final int port = MULTICAST_PORT;
+        Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();
+
+        final InetAddress multicastGroup = InetAddress.getByName(MULTICAST_ADDRESS);
+        final NetworkInterface multicastInterface = findMulticastEnabledIPv4Interface();
+        Logger.info("Using network interface '{}' for multicast", multicastInterface);
+        final Collection<Connection> servers = new ArrayList<>();
+
+        LoopResources resources = LoopResources.create("test");
+
+        Connection server =
+                UdpServer.create()
+                        .option(ChannelOption.SO_REUSEADDR, true)
+                        .bindAddress(() -> new InetSocketAddress(port))
+                        .runOn(resources, InternetProtocolFamily.IPv4)
+                        .handle((in, out) -> {
+                            Flux.<NetworkInterface>generate(s -> {
+                                        // Suppressed "JdkObsolete", usage of Enumeration is deliberate
+                                        if (ifaces.hasMoreElements()) {
+                                            s.next(ifaces.nextElement());
+                                        }
+                                        else {
+                                            s.complete();
+                                        }
+                                    }).flatMap(iface -> {
+                                        if (isMulticastEnabledIPv4Interface(iface)) {
+                                            return in.join(multicastGroup,
+                                                    iface);
+                                        }
+                                        return Flux.empty();
+                                    })
+                                    .thenMany(in.receiveObject())
+                                    .log()
+                                    .subscribe(o -> {
+                                        if(o instanceof DatagramPacket) {
+                                            System.out.println(((DatagramPacket) o).content().toString(StandardCharsets.UTF_8));
+                                        }
+                                    });
+                            return Flux.never();
+                        })
+                        .bind()
+                        .block(Duration.ofSeconds(30));
+
+        server.onDispose().block();
     }
 
-    public static void main(String[] args) throws SocketException {
-        InetSocketAddress groupAddress = new InetSocketAddress(MULTICAST_ADDRESS, MULTICAST_PORT);
-        NetworkInterface ni = NetworkInterface.getByName("enp4s0");
-        Enumeration<InetAddress> addresses = ni.getInetAddresses();
-        InetAddress localAddress = null;
-        while (addresses.hasMoreElements()) {
-            InetAddress address = addresses.nextElement();
-            if (address instanceof Inet4Address){
-                localAddress = address;
+    private static boolean isMulticastEnabledIPv4Interface(NetworkInterface iface) {
+        try {
+            if (!iface.supportsMulticast() || !iface.isUp()) {
+                return false;
+            }
+        }
+        catch (SocketException se) {
+            return false;
+        }
+
+        // Suppressed "JdkObsolete", usage of Enumeration is deliberate
+        for (Enumeration<InetAddress> i = iface.getInetAddresses(); i.hasMoreElements();) {
+            InetAddress address = i.nextElement();
+            if (address.getClass() == Inet4Address.class) {
+                return true;
             }
         }
 
-        InetAddress finalLocalAddress = localAddress;
-        Connection connection = UdpClient.create()
-                .bindAddress(() -> new InetSocketAddress(finalLocalAddress, groupAddress.getPort()))
-                .port(MULTICAST_PORT)
-                .remoteAddress(() -> groupAddress)
-                .runOn(LoopResources.create("udp"), InternetProtocolFamily.IPv4)
-                .option(ChannelOption.SO_REUSEADDR, true)
-                .handle((in, out) -> {
-                    in.join(groupAddress.getAddress(), ni).log().block();
-                    in.receiveObject().log().subscribe(o -> {
-                        System.out.println(o);
-                        if(o instanceof DatagramPacket) {
-                            ByteBuf content = ((DatagramPacket) o).content();
-                            System.out.println(content.toString(StandardCharsets.UTF_8));
-                        }
-                    });
-                    return Flux.never();
-                })
-                .connectNow();
+        return false;
+    }
 
-        connection.onDispose().block();
+    private static NetworkInterface findMulticastEnabledIPv4Interface() throws SocketException {
+        if (isMulticastEnabledIPv4Interface(NetUtil.LOOPBACK_IF)) {
+            return NetUtil.LOOPBACK_IF;
+        }
+
+        // Suppressed "JdkObsolete", usage of Enumeration is deliberate
+        for (Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();) {
+            NetworkInterface iface = ifaces.nextElement();
+            if (isMulticastEnabledIPv4Interface(iface)) {
+                return iface;
+            }
+        }
+
+        throw new UnsupportedOperationException(
+                "This test requires a multicast enabled IPv4 network interface, but " + "none" + " " + "were found");
     }
 }
