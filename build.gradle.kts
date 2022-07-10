@@ -28,7 +28,13 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
 
     // Web Server
-    implementation("com.sparkjava:spark-core:2.9.3")
+    implementation("io.javalin:javalin:4.6.4")
+
+    //json
+    implementation("org.json:json:20220320")
+
+    //java to html
+    implementation("com.j2html:j2html:1.5.0")
 
     // Logger
     implementation("com.github.tinylog-org.tinylog:tinylog-api:v3.0-SNAPSHOT")

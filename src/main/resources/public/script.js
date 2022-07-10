@@ -1,39 +1,57 @@
 var nameInput = document.getElementById('message');
+let id = id => document.getElementById(id);
 
-document.querySelector('form').addEventListener('submit', function (e) {
+let ws = new WebSocket("ws://" + location.hostname + ":" + location.port + "/ws");
+ws.onmessage = msg => updateChat(msg);
+//ws.onclose = () => alert("WebSocket connection closed");
 
-    //prevent the normal submission of the form
-    e.preventDefault();
 
-    console.log(nameInput.value);
-    httpGetAsync("http://localhost:4567/send?message=" + nameInput.value, function (response) {
-        console.log(response);
-    });
-    
-    message.value = '';
-
-    function httpGetAsync(theUrl, callback)
-    {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() { 
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                callback(xmlHttp.responseText);
-        }
-        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-        xmlHttp.send(null);
-    }
+id("send").addEventListener('click', () => sendAndClear(id("message").value));
+id("message").addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    sendAndClear(id("message").value);
+  }
 });
 
-console.log('script.js loaded');
+function sendAndClear(message) {
+  if (message !== "") {
+    console.log(message);
+    ws.send(message);
+    id("message").value = "";
+  }
+}
 
-const btn = document.querySelector(".btn-toggle");
+function updateChat(msg) {
+  let data = JSON.parse(msg.data);
+  id("chat").insertAdjacentHTML("beforeend", data.userMessage);
+  id("chat").scrollTop = id("chat").scrollHeight;
+  console.log(data.userMessage);
+}
+
+const btn = document.querySelector(".btn-colorscheme");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+
+
+window.onload = function () {
+  if (prefersDarkScheme.matches) {
+    console.log("Dark mode");
+    id("themeicon").classList.add("fa-sun");
+  } else {
+    console.log("Light mode");
+    id("themeicon").classList.add("fa-moon");
+  }
+};
 
 btn.addEventListener("click", function () {
   if (prefersDarkScheme.matches) {
     document.body.classList.toggle("light-theme");
+    id("themeicon").classList.toggle("fa-moon");
+    id("themeicon").classList.toggle("fa-sun");
   } else {
     document.body.classList.toggle("dark-theme");
+    id("themeicon").classList.toggle("fa-sun");
+    id("themeicon").classList.toggle("fa-moon");
   }
 });
 
