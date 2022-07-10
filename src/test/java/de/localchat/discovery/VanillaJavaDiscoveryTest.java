@@ -78,11 +78,11 @@ public class VanillaJavaDiscoveryTest {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        //LanServerDetector detector = new LanServerDetector();
+        LanServerDetector detector = new LanServerDetector();
         LanServerPinger pinger = new LanServerPinger();
 
-        //detector.start();
-        //Thread.sleep(1000L);
+        detector.start();
+        Thread.sleep(1000L);
         pinger.start();
     }
 }

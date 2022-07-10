@@ -1,67 +1,83 @@
 package de.localchat.discovery.udp
 
+import de.localchat.discovery.DiscoveryProtocol
 import de.localchat.discovery.Discovery
 import de.localchat.discovery.DiscoveryBackend
-import de.localchat.network.netty.resources.NettyResources
-import io.netty5.bootstrap.Bootstrap
-import io.netty5.channel.*
+import de.localchat.network.netty.udp.UDPBootstrapNetty
+import io.netty.contrib.handler.codec.protobuf.ProtobufDecoder
+import io.netty.contrib.handler.codec.protobuf.ProtobufEncoder
+import io.netty.contrib.handler.codec.protobuf.ProtobufVarint32FrameDecoder
+import io.netty.contrib.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender
+import io.netty5.channel.ChannelHandlerContext
+import io.netty5.channel.ChannelInitializer
+import io.netty5.channel.DefaultAddressedEnvelope
+import io.netty5.channel.SimpleChannelInboundHandler
 import io.netty5.channel.socket.DatagramChannel
 import io.netty5.channel.socket.DatagramPacket
-import io.netty5.channel.socket.InternetProtocolFamily
-import io.netty5.channel.socket.nio.NioDatagramChannel
+import io.netty5.handler.codec.DatagramPacketDecoder
+import io.netty5.handler.codec.DatagramPacketEncoder
+import io.netty5.handler.codec.DelimiterBasedFrameDecoder
+import io.netty5.handler.codec.Delimiters
+import io.netty5.handler.codec.LengthFieldBasedFrameDecoder
+import io.netty5.handler.codec.LengthFieldPrepender
+import io.netty5.handler.codec.string.StringDecoder
+import io.netty5.handler.codec.string.StringEncoder
+import io.netty5.handler.logging.LogLevel
+import io.netty5.handler.logging.LoggingHandler
 import kotlinx.coroutines.flow.Flow
-import java.net.InetAddress
-import java.nio.charset.StandardCharsets
+import org.tinylog.kotlin.Logger
+import java.net.InetSocketAddress
 
 
-class UDPDiscoveryBackend(address: String = MULTICAST_ADDRESS,
-                          port: Int = MULTICAST_PORT) : DiscoveryBackend, AutoCloseable {
-
-    private val resources: NettyResources = NettyResources.nativeResources()
-    private val channel: DatagramChannel
-
-    class ServerMulticastHandler : SimpleChannelInboundHandler<DatagramPacket>() {
-        override fun messageReceived(ctx: ChannelHandlerContext?, msg: DatagramPacket?) {
-            if(msg == null) return
-            println(msg.content().toString(StandardCharsets.UTF_8))
+class UDPDiscoveryBackend(
+    address: String = MULTICAST_ADDRESS,
+    port: Int = MULTICAST_PORT
+) : DiscoveryBackend, UDPBootstrapNetty() {
+    class ServerMulticastHandler : SimpleChannelInboundHandler<DiscoveryProtocol.DiscoveryRequest>() {
+        override fun messageReceived(ctx: ChannelHandlerContext?, msg: DiscoveryProtocol.DiscoveryRequest?) {
+            println(msg.toString())
         }
     }
 
     init {
-        val groupAddress = InetAddress.getByName(address)
+        val groupAddress = InetSocketAddress(address, port)
 
-        val bootstrap = Bootstrap()
-            .group(resources.eventLoopGroup)
-            .channelFactory(resources.newDatagramChannelFactory())
-            .option(ChannelOption.SO_REUSEADDR, true)
-            .handler(object : ChannelInitializer<DatagramChannel>() {
-                override fun initChannel(ch: DatagramChannel) {
-                    ch.pipeline().addLast(ServerMulticastHandler())
-                }
-            })
+        handler(object : ChannelInitializer<DatagramChannel>() {
+            override fun initChannel(ch: DatagramChannel) {
+                val pipeline = ch.pipeline()
 
-        channel = bootstrap
-            .bind(port)
-            .asStage()
-            .get() as DatagramChannel
+                pipeline.addLast(LoggingHandler(LogLevel.DEBUG))
+                //pipeline.addLast(LengthFieldBasedFrameDecoder(1048576, 0, 4, 0, 4))
+                //pipeline.addLast(ProtobufVarint32FrameDecoder())
+                //pipeline.addLast(ProtobufDecoder(DiscoveryProtocol.DiscoveryRequest.getDefaultInstance()))
+                pipeline.addLast(DatagramPacketDecoder(ProtobufDecoder(DiscoveryProtocol.DiscoveryRequest.getDefaultInstance())))
 
-        channel
-            .joinGroup(groupAddress)
-            .asStage()
-            .sync()
+                //pipeline.addLast(LengthFieldPrepender(4))
+                //pipeline.addLast(ProtobufVarint32LengthFieldPrepender())
+                //pipeline.addLast(ProtobufEncoder())
+                pipeline.addLast(DatagramPacketEncoder(ProtobufEncoder()))
 
-        resources.close()
+                pipeline.addLast(ServerMulticastHandler())
+            }
+        })
+
+        Logger.debug("Start udp discovery backend")
+
+        bind(groupAddress.port)
+        joinGroup(groupAddress)
     }
 
     override fun send(discovery: Discovery) {
-        channel.writeAndFlush(discovery.toString())
+        val discoveryRequest = DiscoveryProtocol.DiscoveryRequest.newBuilder()
+            .setHost(discovery.host)
+            .setPort(discovery.port)
+            .build()
+
+        send(DefaultAddressedEnvelope(discoveryRequest, InetSocketAddress(MULTICAST_ADDRESS, MULTICAST_PORT)))
+        //send(discoveryRequest)
     }
 
     override fun discovered(): Flow<Discovery> {
-        TODO("Not yet implemented")
-    }
-
-    override fun close() {
         TODO("Not yet implemented")
     }
 
