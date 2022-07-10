@@ -2,8 +2,7 @@ package de.localchat.discovery
 
 import kotlinx.coroutines.flow.Flow
 
-interface DiscoveryBackend {
+interface DiscoveryBackend : AutoCloseable {
     fun send(discovery: Discovery)
-    fun discover(): Flow<Discovery>
-    fun terminate()
+    fun discovered(): Flow<Discovery>
 }

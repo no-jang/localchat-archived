@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package de.localchat.discovery;
+
+option optimize_for = SPEED;
+
+message DiscoveryRequest {
+    string host = 1;
+    uint32 port = 2;
+}
