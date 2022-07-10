@@ -31,17 +31,27 @@ function updateChat(msg) {
 const btn = document.querySelector(".btn-colorscheme");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-if (prefersDarkScheme.matches) {
-  id("themeicon").classList.toggle("fa-sun");
-}
+
+
+window.onload = function () {
+  if (prefersDarkScheme.matches) {
+    console.log("Dark mode");
+    id("themeicon").classList.add("fa-sun");
+  } else {
+    console.log("Light mode");
+    id("themeicon").classList.add("fa-moon");
+  }
+};
 
 btn.addEventListener("click", function () {
   if (prefersDarkScheme.matches) {
     document.body.classList.toggle("light-theme");
     id("themeicon").classList.toggle("fa-moon");
+    id("themeicon").classList.toggle("fa-sun");
   } else {
     document.body.classList.toggle("dark-theme");
     id("themeicon").classList.toggle("fa-sun");
+    id("themeicon").classList.toggle("fa-moon");
   }
 });
 
