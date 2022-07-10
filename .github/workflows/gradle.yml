@@ -27,7 +27,7 @@ jobs:
     - name: Build
       uses: gradle/gradle-build-action@v2.2.1
       with:
-        arguments: build
+        arguments: build --no-daemon
 
     - name: Variables
       uses: FranzDiebold/github-env-vars-action@v2.3.1
