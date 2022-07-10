@@ -15,7 +15,7 @@ import static j2html.TagCreator.attrs;
 import static j2html.TagCreator.div;
 
 public class JavlinWebService implements WebService {
-    private static Map<WsContext, String> userUsernameMap = new ConcurrentHashMap<>();
+    private static final Map<WsContext, String> userUsernameMap = new ConcurrentHashMap<>();
     private static int nextUserNumber = 1;
 
     public JavlinWebService() {
