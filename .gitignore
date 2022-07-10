@@ -3,6 +3,7 @@
 build
 
 ### Visual Studio Code ###
+.vscode
 .settings
 bin
 
