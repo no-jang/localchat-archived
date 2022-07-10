@@ -6,33 +6,42 @@ ws.onmessage = msg => updateChat(msg);
 //ws.onclose = () => alert("WebSocket connection closed");
 
 
-document.querySelector('form').addEventListener('submit', function (e) {
-    //prevent the normal submission of the form
-    e.preventDefault();
-    if (nameInput.value !== "") {
-        ws.send(nameInput.value);
-    }
-    nameInput.value = '';
-    
-
+id("send").addEventListener('click', () => sendAndClear(id("message").value));
+id("message").addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    sendAndClear(id("message").value);
+  }
 });
 
+function sendAndClear(message) {
+  if (message !== "") {
+    console.log(message);
+    ws.send(message);
+    id("message").value = "";
+  }
+}
+
 function updateChat(msg) {
-    let data = JSON.parse(msg.data);
-    id("chat").insertAdjacentHTML("beforeend", data.userMessage);
-    id("chat").scrollTop = id("chat").scrollHeight;
-    console.log(data.userMessage);
-};
+  let data = JSON.parse(msg.data);
+  id("chat").insertAdjacentHTML("beforeend", data.userMessage);
+  id("chat").scrollTop = id("chat").scrollHeight;
+  console.log(data.userMessage);
+}
 
-
-const btn = document.querySelector(".btn-toggle");
+const btn = document.querySelector(".btn-colorscheme");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+if (prefersDarkScheme.matches) {
+  id("themeicon").classList.toggle("fa-sun");
+}
 
 btn.addEventListener("click", function () {
   if (prefersDarkScheme.matches) {
     document.body.classList.toggle("light-theme");
+    id("themeicon").classList.toggle("fa-moon");
   } else {
     document.body.classList.toggle("dark-theme");
+    id("themeicon").classList.toggle("fa-sun");
   }
 });
 
