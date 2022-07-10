@@ -21,17 +21,17 @@ interface NettyResources {
 
     companion object {
         fun nativeType(): Type {
-            return if(Epoll.isAvailable()) {
+            return if (Epoll.isAvailable()) {
                 Type.EPOLL
-            } else if(KQueue.isAvailable()) {
+            } else if (KQueue.isAvailable()) {
                 Type.KQUEUE
             } else {
                 Type.NIO
             }
         }
 
-        fun nativeBackend(): NettyResources {
-            return when(nativeType()) {
+        fun nativeResources(): NettyResources {
+            return when (nativeType()) {
                 Type.EPOLL -> EpollNettyResources()
                 Type.KQUEUE -> KQueueNettyResources()
                 else -> NIONettyResources()

@@ -3,6 +3,7 @@ body {
     --bkg-color: #eeeeee;
     --border-color: #696969;
 }
+
 body.dark-theme {
     --text-color: #eeeeee;
     --bkg-color: #262626;
@@ -27,6 +28,7 @@ input {
         --bkg-color: #262626;
         --border-color: #696969;
     }
+
     body.light-theme {
         --text-color: #363636;
         --bkg-color: #eeeeee;
@@ -40,16 +42,17 @@ body {
 }
 
 
-
 @media (pointer: none), (pointer: coarse) {
     body {
         font-size: 4vw;
     }
+
     input {
         padding: 30px;
         font-size: 3.5vw;
     }
 }
+
 .footer {
     position: fixed;
     display: inline-flex;
@@ -58,10 +61,12 @@ body {
     left: 0px;
     width: 100%;
 }
+
 .inputbox {
     width: 100%;
     outline: none;
 }
+
 .confirmbutton {
     margin-left: 0;
     cursor: pointer;

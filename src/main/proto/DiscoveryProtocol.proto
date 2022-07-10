@@ -1,5 +1,7 @@
 syntax = "proto3";
+
 package de.localchat.discovery;
+
 option optimize_for = SPEED;
 
 message DiscoveryRequest {

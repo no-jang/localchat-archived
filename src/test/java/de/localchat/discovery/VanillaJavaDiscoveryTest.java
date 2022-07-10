@@ -8,6 +8,15 @@ import java.net.MulticastSocket;
 import java.nio.charset.StandardCharsets;
 
 public class VanillaJavaDiscoveryTest {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        LanServerDetector detector = new LanServerDetector();
+        LanServerPinger pinger = new LanServerPinger();
+
+        detector.start();
+        Thread.sleep(1000L);
+        pinger.start();
+    }
+
     public static class LanServerDetector extends Thread {
         private final InetAddress multicastAddress;
         private final MulticastSocket socket;
@@ -43,13 +52,13 @@ public class VanillaJavaDiscoveryTest {
                 throw new RuntimeException(e);
             }
 
-            socket.close();;
+            socket.close();
         }
     }
 
     public static class LanServerPinger extends Thread {
-        private InetAddress multicastAddress;
-        private DatagramSocket socket;
+        private final InetAddress multicastAddress;
+        private final DatagramSocket socket;
 
         public LanServerPinger() throws IOException {
             this.multicastAddress = InetAddress.getByName("224.0.2.60");
@@ -58,7 +67,7 @@ public class VanillaJavaDiscoveryTest {
 
         @Override
         public void run() {
-            byte[] data = new String("Hello World!").getBytes(StandardCharsets.UTF_8);
+            byte[] data = "Hello World!".getBytes(StandardCharsets.UTF_8);
 
             while (!this.isInterrupted()) {
                 try {
@@ -75,14 +84,5 @@ public class VanillaJavaDiscoveryTest {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-        LanServerDetector detector = new LanServerDetector();
-        LanServerPinger pinger = new LanServerPinger();
-
-        detector.start();
-        Thread.sleep(1000L);
-        pinger.start();
     }
 }

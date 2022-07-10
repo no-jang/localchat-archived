@@ -9,13 +9,12 @@ document.querySelector('form').addEventListener('submit', function (e) {
     httpGetAsync("http://localhost:4567/send?message=" + nameInput.value, function (response) {
         console.log(response);
     });
-    
+
     message.value = '';
 
-    function httpGetAsync(theUrl, callback)
-    {
+    function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() { 
+        xmlHttp.onreadystatechange = function () {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 callback(xmlHttp.responseText);
         }
@@ -30,10 +29,10 @@ const btn = document.querySelector(".btn-toggle");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 btn.addEventListener("click", function () {
-  if (prefersDarkScheme.matches) {
-    document.body.classList.toggle("light-theme");
-  } else {
-    document.body.classList.toggle("dark-theme");
-  }
+    if (prefersDarkScheme.matches) {
+        document.body.classList.toggle("light-theme");
+    } else {
+        document.body.classList.toggle("dark-theme");
+    }
 });
 

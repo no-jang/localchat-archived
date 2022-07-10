@@ -2,8 +2,6 @@ package de.localchat.discovery;
 
 import io.netty5.bootstrap.Bootstrap;
 import io.netty5.buffer.api.Buffer;
-import io.netty5.buffer.api.BufferAllocator;
-import io.netty5.buffer.api.DefaultBufferAllocators;
 import io.netty5.channel.*;
 import io.netty5.channel.nio.NioHandler;
 import io.netty5.channel.socket.DatagramChannel;
@@ -13,22 +11,15 @@ import io.netty5.channel.socket.nio.NioDatagramChannel;
 import io.netty5.handler.logging.LogLevel;
 import io.netty5.handler.logging.LoggingHandler;
 
-import java.net.*;
+import java.net.InetSocketAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
-import java.util.Enumeration;
 import java.util.concurrent.ExecutionException;
 
 public class NettyDiscoveryTest {
     public static final String MULTICAST_ADDRESS = "224.0.2.60";
     public static final int MULTICAST_PORT = 4445;
-
-    public static class ServerMulticastHandler extends SimpleChannelInboundHandler<DatagramPacket> {
-        @Override
-        protected void messageReceived(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
-            Buffer content = msg.content();
-            System.out.println(content.toString(StandardCharsets.UTF_8));
-        }
-    }
 
     public static void main(String[] args) throws SocketException, InterruptedException, ExecutionException {
         InetSocketAddress groupAddress = new InetSocketAddress(MULTICAST_ADDRESS, MULTICAST_PORT);
@@ -63,7 +54,7 @@ public class NettyDiscoveryTest {
                         }
                     });
 
-            NioDatagramChannel ch = (NioDatagramChannel)b.bind(groupAddress.getPort()).asStage().sync().get();
+            NioDatagramChannel ch = (NioDatagramChannel) b.bind(groupAddress.getPort()).asStage().sync().get();
             ch.joinGroup(groupAddress, ni).asStage().sync();
 
             while (true) {
@@ -74,6 +65,14 @@ public class NettyDiscoveryTest {
             //ch.closeFuture().await();
         } finally {
             group.shutdownGracefully();
+        }
+    }
+
+    public static class ServerMulticastHandler extends SimpleChannelInboundHandler<DatagramPacket> {
+        @Override
+        protected void messageReceived(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
+            Buffer content = msg.content();
+            System.out.println(content.toString(StandardCharsets.UTF_8));
         }
     }
 }
