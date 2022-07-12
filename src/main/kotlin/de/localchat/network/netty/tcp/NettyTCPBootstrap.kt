@@ -11,7 +11,7 @@ abstract class NettyTCPBootstrap : NettyBootstrap<SocketChannel>() {
     }
 
     fun connect() {
-        if(channel != null) return
+        if (channel != null) return
         Logger.debug("Connect tcp connection {} to {}:{}", name, remoteAddress, port)
 
         channel = bootstrap.connect(remoteAddress, port)

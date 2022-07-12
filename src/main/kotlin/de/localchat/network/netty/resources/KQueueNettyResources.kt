@@ -11,8 +11,6 @@ import io.netty5.channel.socket.DatagramChannel
 import io.netty5.channel.socket.InternetProtocolFamily
 import io.netty5.channel.socket.ServerSocketChannel
 import io.netty5.channel.socket.SocketChannel
-import io.netty5.channel.socket.nio.NioServerSocketChannel
-import io.netty5.channel.socket.nio.NioSocketChannel
 
 class KQueueNettyResources : NettyResources {
     override val type: NettyResources.Type = NettyResources.Type.KQUEUE

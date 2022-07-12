@@ -1,8 +1,6 @@
 package de.localchat.network.netty
 
 import io.netty5.bootstrap.ServerBootstrap
-import io.netty5.channel.Channel
-import io.netty5.channel.ChannelFactory
 import io.netty5.channel.ServerChannel
 import io.netty5.channel.ServerChannelFactory
 
