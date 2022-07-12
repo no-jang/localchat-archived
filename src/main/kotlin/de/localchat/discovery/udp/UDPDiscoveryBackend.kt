@@ -5,7 +5,7 @@ import de.localchat.discovery.DiscoveryBackend
 import de.localchat.discovery.DiscoveryProtocol.DiscoveryRequest
 import de.localchat.discovery.common.DefaultClientDiscovery
 import de.localchat.network.netty.udp.NettyMulticastUDPBootstrap
-import de.localchat.network.netty.udp.PipelineCallback
+import de.localchat.network.netty.PipelineCallback
 import io.netty.contrib.handler.codec.protobuf.ProtobufDecoder
 import io.netty.contrib.handler.codec.protobuf.ProtobufEncoder
 import io.netty5.channel.ChannelHandlerContext
