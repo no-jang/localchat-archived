@@ -1,6 +1,7 @@
 package de.localchat.discovery
 
 interface ClientDiscovery {
-    val host: String
+    val name: String
+    val address: String
     val port: Int
 }

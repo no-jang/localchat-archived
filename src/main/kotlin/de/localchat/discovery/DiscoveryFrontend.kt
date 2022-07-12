@@ -1,3 +1,3 @@
 package de.localchat.discovery
 
-interface DiscoveryService
+interface DiscoveryFrontend

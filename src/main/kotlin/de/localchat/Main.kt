@@ -8,6 +8,7 @@ import kotlinx.coroutines.runBlocking
 
 fun main(args: Array<String>) {
     val discoveryBackend = UDPDiscoveryBackend()
+    discoveryBackend.start()
 
     runBlocking {
         launch {
@@ -18,7 +19,7 @@ fun main(args: Array<String>) {
 
         launch {
             while (true) {
-                discoveryBackend.send(DefaultClientDiscovery("Hello World", 1234))
+                discoveryBackend.send(DefaultClientDiscovery("marek", "Hello World", 1234))
                 delay(1500L)
             }
         }
