@@ -8,11 +8,10 @@ import kotlinx.coroutines.runBlocking
 
 fun main(args: Array<String>) {
     val discoveryBackend = UDPDiscoveryBackend()
-    discoveryBackend.start()
 
     runBlocking {
         launch {
-            discoveryBackend.discovered().collect {
+            discoveryBackend.open().collect {
                 println("Discovered: $it")
             }
         }

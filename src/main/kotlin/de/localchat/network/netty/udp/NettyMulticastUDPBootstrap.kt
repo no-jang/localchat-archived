@@ -3,7 +3,7 @@ package de.localchat.network.netty.udp
 import de.localchat.network.util.InterfaceUtil
 import org.tinylog.kotlin.Logger
 
-abstract class NettyMulticastUDPBootstrap : NettyUDPBootstrap() {
+class NettyMulticastUDPBootstrap(name: String) : NettyUDPBootstrap(name) {
     fun joinMulticast() {
         channel?.let {
             Logger.debug("Channel {} joins multicast group {}", name, remoteAddress)

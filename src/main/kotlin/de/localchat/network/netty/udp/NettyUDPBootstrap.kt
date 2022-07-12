@@ -8,7 +8,7 @@ import io.netty5.channel.socket.InternetProtocolFamily
 import org.tinylog.kotlin.Logger
 import java.net.InetSocketAddress
 
-abstract class NettyUDPBootstrap : NettyBootstrap<DatagramChannel>() {
+open class NettyUDPBootstrap(name: String) : NettyBootstrap<DatagramChannel>(name) {
     override fun newChannelFactory(): ChannelFactory<DatagramChannel> {
         return resources.newDatagramChannelFactory(InternetProtocolFamily.IPv4)
     }
@@ -22,7 +22,7 @@ abstract class NettyUDPBootstrap : NettyBootstrap<DatagramChannel>() {
     }
 
     override fun send(o: Any) {
-        send(o, remoteSocketAddress!!)
+        send(o, remoteSocketAddress ?: throw IllegalStateException("Remote address is null"))
     }
 
     fun send(o: Any, remoteAddress: String, port: Int) {

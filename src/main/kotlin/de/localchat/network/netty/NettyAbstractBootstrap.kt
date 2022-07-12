@@ -9,12 +9,9 @@ import java.net.InetSocketAddress
 
 typealias PipelineCallback = (pipeline: ChannelPipeline) -> Unit
 
-abstract class NettyAbstractBootstrap<B : AbstractBootstrap<*, *, *>, C : Channel> : AutoCloseable {
-    abstract val name: String
-    abstract val port: Int
-    abstract val pipeline: PipelineCallback
-
-    open val remoteAddress: String? = null
+abstract class NettyAbstractBootstrap<B : AbstractBootstrap<*, *, *>, C : Channel>(
+    val name: String
+) : AutoCloseable {
 
     protected val resources: NettyResources = NettyResources.nativeResources()
     protected val eventLoopGroup: EventLoopGroup = MultithreadEventLoopGroup(resources.newHandlerFactory())
@@ -30,11 +27,29 @@ abstract class NettyAbstractBootstrap<B : AbstractBootstrap<*, *, *>, C : Channe
         .group(eventLoopGroup)
         .handler(object : ChannelInitializer<C>() {
             override fun initChannel(ch: C) {
-                pipeline.invoke(ch.pipeline())
+                pipeline?.invoke(ch.pipeline())
             }
         }) as B
 
     protected var channel: C? = null
+
+    open var port: Int = 0
+        set(value) {
+            if (channel != null) return
+            field = value
+        }
+
+    open var remoteAddress: String? = null
+        set(value) {
+            if (channel != null) return
+            field = value
+        }
+
+    open var pipeline: PipelineCallback? = null
+        set(value) {
+            if (channel != null) return
+            field = value
+        }
 
     abstract fun newBootstrap(): B
 

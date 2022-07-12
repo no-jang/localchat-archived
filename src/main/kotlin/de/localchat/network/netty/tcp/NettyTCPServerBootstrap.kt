@@ -5,7 +5,7 @@ import io.netty5.channel.ServerChannelFactory
 import io.netty5.channel.socket.ServerSocketChannel
 import org.tinylog.kotlin.Logger
 
-abstract class NettyTCPServerBootstrap : NettyServerBootstrap<ServerSocketChannel>() {
+class NettyTCPServerBootstrap(name: String) : NettyServerBootstrap<ServerSocketChannel>(name) {
     override fun newServerChannelFactory(): ServerChannelFactory<ServerSocketChannel> {
         return resources.newServerSocketChannelFactory()
     }
