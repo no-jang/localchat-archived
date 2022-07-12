@@ -1,26 +1,53 @@
 package de.localchat
 
-import de.localchat.discovery.common.DefaultClientDiscovery
+import de.localchat.discovery.DiscoveryBackend
 import de.localchat.discovery.udp.UDPDiscoveryBackend
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import org.koin.core.context.startKoin
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.module
+import org.koin.java.KoinJavaComponent
+
+()
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.module
+import org.koin.java.KoinJavaComponent
 
 fun main(args: Array<String>) {
-    val discoveryBackend = UDPDiscoveryBackend()
+    //val discoveryBackend = UDPDiscoveryBackend()
+    //discoveryBackend.open()
 
-    runBlocking {
+    val testModule = module {
+        singleOf(::UDPDiscoveryBackend) { bind<DiscoveryBackend>() }
+    }
+
+    val application = startKoin {
+        printLogger()
+        modules(testModule)
+    }
+
+    val test = KoinJavaComponent.getKoin().get<>()
+
+/*    runBlocking {
         launch {
-            discoveryBackend.open().collect {
+            discoveryBackend.discoveryEvent().collect {
                 println("Discovered: $it")
             }
         }
 
-        launch {
-            while (true) {
-                discoveryBackend.send(DefaultClientDiscovery("marek", "Hello World", 1234))
-                delay(1500L)
-            }
+        discoveryBackend.send(DefaultClientDiscovery("marek", "Hello World", 1234))
+        delay(1500L)
+        discoveryBackend.send(DefaultClientDiscovery("marek", "Hello World", 1234))
+        delay(1500L)
+        discoveryBackend.send(DefaultClientDiscovery("marek", "Hello World", 1234))
+        delay(1500L)
+        discoveryBackend.close()*/
+
+    /*launch {
+        while (true) {
+            discoveryBackend.send(DefaultClientDiscovery("marek", "Hello World", 1234))
+            delay(1500L)
         }
-    }
+    }*/
+    //}
 }

@@ -13,10 +13,6 @@ class DefaultDiscoveryService(val backend: DiscoveryBackend) : DiscoveryService 
         }
     }
 
-    override fun acknowledgeDiscovery(discovery: ClientDiscovery) {
-        TODO("Not yet implemented")
-    }
-
     override fun discoveryEvent(): Flow<ClientDiscovery> {
         TODO("Not yet implemented")
     }

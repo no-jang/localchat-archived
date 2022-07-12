@@ -8,30 +8,29 @@ import de.localchat.network.netty.pipeline.StandardPipelines.defaultProtobuf
 import de.localchat.network.netty.udp.NettyMulticastUDPBootstrap
 import io.netty5.channel.ChannelHandlerContext
 import io.netty5.channel.SimpleChannelInboundHandler
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.runBlocking
 import org.tinylog.kotlin.Logger
 
 class UDPDiscoveryBackend : DiscoveryBackend {
     private val udp = NettyMulticastUDPBootstrap("discovery")
 
+    private val discoveryFlow = MutableSharedFlow<ClientDiscovery>()
+
     init {
         udp.port = MULTICAST_PORT
         udp.remoteAddress = MULTICAST_ADDRESS
     }
 
-    override suspend fun open(): Flow<ClientDiscovery> {
-        val discoveryChannel = Channel<ClientDiscovery>()
-
+    override fun open() {
         udp.pipeline = fun(pipeline) {
             pipeline.defaultProtobuf(DiscoveryRequest.getDefaultInstance())
             pipeline.addLast(object : SimpleChannelInboundHandler<DiscoveryRequest>() {
                 override fun messageReceived(ctx: ChannelHandlerContext?, msg: DiscoveryRequest) = runBlocking {
                     val discovery = DefaultClientDiscovery(msg.name, msg.address, msg.port)
                     Logger.trace("Received discovery request {}", discovery)
-                    discoveryChannel.send(discovery)
+                    discoveryFlow.emit(discovery)
                 }
             })
         }
@@ -39,8 +38,6 @@ class UDPDiscoveryBackend : DiscoveryBackend {
         Logger.debug("Open udp discovery backend")
         udp.bind()
         udp.joinMulticast()
-
-        return discoveryChannel.consumeAsFlow()
     }
 
     override fun send(discovery: ClientDiscovery) {
@@ -52,6 +49,8 @@ class UDPDiscoveryBackend : DiscoveryBackend {
                 .setPort(discovery.port)
         )
     }
+
+    override fun discoveryEvent(): Flow<ClientDiscovery> = discoveryFlow
 
     override fun close() {
         Logger.debug("Close udp discovery backend")
