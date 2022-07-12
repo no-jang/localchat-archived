@@ -5,11 +5,20 @@ import io.netty5.channel.ChannelFactory
 import io.netty5.channel.DefaultAddressedEnvelope
 import io.netty5.channel.socket.DatagramChannel
 import io.netty5.channel.socket.InternetProtocolFamily
+import org.tinylog.kotlin.Logger
 import java.net.InetSocketAddress
 
 abstract class NettyUDPBootstrap : NettyBootstrap<DatagramChannel>() {
     override fun newChannelFactory(): ChannelFactory<DatagramChannel> {
         return resources.newDatagramChannelFactory(InternetProtocolFamily.IPv4)
+    }
+
+    fun bind() {
+        if (channel != null) return
+        Logger.debug("Bind udp connection {} to port {}", name, port)
+
+        channel = bootstrap.bind(port)
+            .waitForChannelFuture()
     }
 
     override fun send(o: Any) {

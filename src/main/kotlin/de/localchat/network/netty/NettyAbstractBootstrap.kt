@@ -9,7 +9,7 @@ import java.net.InetSocketAddress
 
 typealias PipelineCallback = (pipeline: ChannelPipeline) -> Unit
 
-abstract class NettyAbstractBootstrap<B : AbstractBootstrap<B, Channel, ChannelFactory<out Channel>>, C : Channel> : AutoCloseable {
+abstract class NettyAbstractBootstrap<B : AbstractBootstrap<*, *, *>, C : Channel> : AutoCloseable {
     abstract val name: String
     abstract val port: Int
     abstract val pipeline: PipelineCallback
@@ -24,26 +24,19 @@ abstract class NettyAbstractBootstrap<B : AbstractBootstrap<B, Channel, ChannelF
         InetSocketAddress(remoteAddress, port)
     }
 
+    @Suppress("UNCHECKED_CAST")
     protected val bootstrap: B = newBootstrap()
-            .option(ChannelOption.SO_REUSEADDR, true)
-            .group(eventLoopGroup)
-            .handler(object : ChannelInitializer<C>() {
-                override fun initChannel(ch: C) {
-                    pipeline.invoke(ch.pipeline())
-                }
-            })
+        .option(ChannelOption.SO_REUSEADDR, true)
+        .group(eventLoopGroup)
+        .handler(object : ChannelInitializer<C>() {
+            override fun initChannel(ch: C) {
+                pipeline.invoke(ch.pipeline())
+            }
+        }) as B
 
     protected var channel: C? = null
 
     abstract fun newBootstrap(): B
-
-    fun bind() {
-        if (channel != null) return
-        Logger.debug("Bind {} to port {}", name, port)
-
-        channel = bootstrap.bind(port)
-            .waitForChannelFuture()
-    }
 
     open fun send(o: Any) {
         channel?.writeAndFlush(o)
@@ -56,7 +49,7 @@ abstract class NettyAbstractBootstrap<B : AbstractBootstrap<B, Channel, ChannelF
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun Future<Channel>.waitForChannelFuture(): C =
+    protected fun Future<Channel>.waitForChannelFuture(): C =
         asStage()
             .sync()
             .get() as C
