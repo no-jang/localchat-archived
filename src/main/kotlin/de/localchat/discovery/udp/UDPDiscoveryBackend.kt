@@ -1,9 +1,9 @@
 package de.localchat.discovery.udp
 
-import de.localchat.discovery.Discovery
+import de.localchat.discovery.ClientDiscovery
 import de.localchat.discovery.DiscoveryBackend
 import de.localchat.discovery.DiscoveryProtocol.DiscoveryRequest
-import de.localchat.discovery.common.CommonDiscovery
+import de.localchat.discovery.common.DefaultClientDiscovery
 import de.localchat.network.netty.udp.NettyMulticastUDPBootstrap
 import de.localchat.network.netty.udp.PipelineCallback
 import io.netty.contrib.handler.codec.protobuf.ProtobufDecoder
@@ -28,7 +28,7 @@ class UDPDiscoveryBackend(
 
     private class DiscoveryHandler(val backend: UDPDiscoveryBackend) : SimpleChannelInboundHandler<DiscoveryRequest>() {
         override fun messageReceived(ctx: ChannelHandlerContext?, msg: DiscoveryRequest) = runBlocking {
-            val discovery = CommonDiscovery(msg.host, msg.port)
+            val discovery = DefaultClientDiscovery(msg.host, msg.port)
             backend.discoveredChannel.send(discovery)
         }
     }
@@ -36,7 +36,7 @@ class UDPDiscoveryBackend(
     override val name: String
         get() = "udp discovery"
 
-    private val discoveredChannel: Channel<Discovery> = Channel()
+    private val discoveredChannel: Channel<ClientDiscovery> = Channel()
 
     override val pipeline: PipelineCallback = fun(pipeline: ChannelPipeline) {
         pipeline.addLast(LoggingHandler(LogLevel.DEBUG))
@@ -55,7 +55,7 @@ class UDPDiscoveryBackend(
         const val MULTICAST_PORT = 4445
     }
 
-    override fun send(discovery: Discovery) {
+    override fun send(discovery: ClientDiscovery) {
         send(
             DiscoveryRequest.newBuilder()
                 .setHost(discovery.host)
@@ -64,5 +64,5 @@ class UDPDiscoveryBackend(
         )
     }
 
-    override fun discovered(): Flow<Discovery> = discoveredChannel.receiveAsFlow()
+    override fun discovered(): Flow<ClientDiscovery> = discoveredChannel.receiveAsFlow()
 }

@@ -43,6 +43,10 @@ dependencies {
     implementation("com.google.protobuf:protobuf-java:3.21.1")
     implementation("org.json:json:20220320")
 
+    // Dependency Injection
+    implementation("io.insert-koin:koin-core:3.2.0")
+    testImplementation("io.insert-koin:koin-test:3.2.0")
+
     // Network
     implementation("io.netty:netty5-handler:5.0.0.Alpha3")
 

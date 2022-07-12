@@ -1,6 +1,6 @@
 package de.localchat.discovery
 
-interface Discovery {
+interface ClientDiscovery {
     val host: String
     val port: Int
 }

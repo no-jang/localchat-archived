@@ -1,6 +1,6 @@
 package de.localchat
 
-import de.localchat.discovery.common.CommonDiscovery
+import de.localchat.discovery.common.DefaultClientDiscovery
 import de.localchat.discovery.udp.UDPDiscoveryBackend
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
 
         launch {
             while (true) {
-                discoveryBackend.send(CommonDiscovery("Hello World", 1234))
+                discoveryBackend.send(DefaultClientDiscovery("Hello World", 1234))
                 delay(1500L)
             }
         }
