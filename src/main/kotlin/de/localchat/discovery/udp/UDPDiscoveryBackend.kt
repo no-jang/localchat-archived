@@ -32,7 +32,7 @@ class UDPDiscoveryBackend : NettyMulticastUDPBootstrap(), DiscoveryBackend {
 
     private val discoveredChannel: Channel<ClientDiscovery> = Channel()
 
-    override fun start() {
+    override fun open() {
         Logger.debug("Start UDP discovery")
         bind()
         joinMulticast()
