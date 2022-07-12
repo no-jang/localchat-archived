@@ -22,7 +22,7 @@ import kotlinx.coroutines.runBlocking
 import org.tinylog.kotlin.Logger
 
 class UDPDiscoveryBackend(
-    override val groupAddress: String = MULTICAST_ADDRESS,
+    override val remoteAddress: String = MULTICAST_ADDRESS,
     override val port: Int = MULTICAST_PORT
 ) : NettyMulticastUDPBootstrap(), DiscoveryBackend {
 
@@ -47,12 +47,8 @@ class UDPDiscoveryBackend(
 
     init {
         Logger.debug("Start udp discovery")
-        bindAndJoin()
-    }
-
-    companion object {
-        const val MULTICAST_ADDRESS = "224.0.2.60"
-        const val MULTICAST_PORT = 4445
+        bind()
+        joinMulticast()
     }
 
     override fun send(discovery: ClientDiscovery) {
@@ -65,4 +61,9 @@ class UDPDiscoveryBackend(
     }
 
     override fun discovered(): Flow<ClientDiscovery> = discoveredChannel.receiveAsFlow()
+
+    companion object {
+        const val MULTICAST_ADDRESS = "224.0.2.60"
+        const val MULTICAST_PORT = 4445
+    }
 }
