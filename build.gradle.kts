@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.serialization") version "1.7.10"
 
     id("com.google.protobuf") version "0.8.19"
+    id("com.google.devtools.ksp") version "1.7.10-1.0.6"
 
     id("com.github.ben-manes.versions") version "0.42.0"
 }
@@ -53,6 +54,7 @@ dependencies {
 
     // Dependency Injection
     implementation("io.insert-koin:koin-core:3.2.0")
+    implementation("io.insert-koin:koin-annotations:1.0.1")
     testImplementation("io.insert-koin:koin-test:3.2.0")
 
     // Network

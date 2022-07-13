@@ -1,9 +1,9 @@
 package de.localchat.discovery
 
-import de.localchat.util.lifecycle.LifeCycle
+import de.localchat.util.lifecycle.Lifecycle
 import kotlinx.coroutines.flow.Flow
 
-interface DiscoveryBackend : LifeCycle {
+interface DiscoveryBackend : Lifecycle {
     fun send(discovery: ClientDiscovery)
 
     fun discoveryEvent(): Flow<ClientDiscovery>
