@@ -1,23 +1,10 @@
 package de.localchat
 
-import de.localchat.discovery.DiscoveryBackend
-import de.localchat.discovery.udp.UDPDiscoveryBackend
-import org.koin.core.context.startKoin
-import org.koin.core.module.dsl.bind
-import org.koin.core.module.dsl.singleOf
-import org.koin.dsl.module
-import org.koin.java.KoinJavaComponent
-
-()
-import org.koin.core.module.dsl.singleOf
-import org.koin.dsl.module
-import org.koin.java.KoinJavaComponent
-
 fun main(args: Array<String>) {
     //val discoveryBackend = UDPDiscoveryBackend()
     //discoveryBackend.open()
 
-    val testModule = module {
+   /* val testModule = module {
         singleOf(::UDPDiscoveryBackend) { bind<DiscoveryBackend>() }
     }
 
@@ -26,7 +13,7 @@ fun main(args: Array<String>) {
         modules(testModule)
     }
 
-    val test = KoinJavaComponent.getKoin().get<>()
+    val test = KoinJavaComponent.getKoin().get<>()*/
 
 /*    runBlocking {
         launch {

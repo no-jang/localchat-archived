@@ -1,3 +1,5 @@
+import com.google.protobuf.gradle.*
+
 plugins {
     application
     idea
@@ -25,6 +27,12 @@ application {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(18))
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.6.1"
     }
 }
 
