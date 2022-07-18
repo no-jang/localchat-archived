@@ -58,11 +58,11 @@ repositories {
 
 dependencies {
     // Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
     // Web
     implementation("io.javalin:javalin:4.6.4")
-    implementation("com.j2html:j2html:1.5.0")
+    implementation("com.j2html:j2html:1.6.0")
 
     // Data
     implementation("com.google.protobuf:protobuf-java:3.21.1")
