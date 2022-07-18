@@ -1,8 +1,5 @@
-package de.localchat.discovery.common
+package de.localchat.discovery
 
-import de.localchat.discovery.ClientDiscovery
-import de.localchat.discovery.DiscoveryBackend
-import de.localchat.discovery.DiscoveryService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.runBlocking
 

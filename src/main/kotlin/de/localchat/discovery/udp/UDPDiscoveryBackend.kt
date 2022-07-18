@@ -1,9 +1,9 @@
 package de.localchat.discovery.udp
 
 import de.localchat.discovery.ClientDiscovery
+import de.localchat.discovery.DefaultClientDiscovery
 import de.localchat.discovery.DiscoveryBackend
 import de.localchat.discovery.DiscoveryProtocol.DiscoveryRequest
-import de.localchat.discovery.common.DefaultClientDiscovery
 import de.localchat.network.netty.pipeline.StandardPipelines.defaultProtobuf
 import de.localchat.network.netty.udp.NettyMulticastUDPBootstrap
 import io.netty5.channel.ChannelHandlerContext
@@ -11,9 +11,12 @@ import io.netty5.channel.SimpleChannelInboundHandler
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.runBlocking
+import org.koin.core.annotation.Single
 import org.tinylog.kotlin.Logger
+import java.io.Closeable
 
-class UDPDiscoveryBackend : DiscoveryBackend {
+@Single(binds = [DiscoveryBackend::class, Closeable::class])
+class UDPDiscoveryBackend : DiscoveryBackend, Closeable {
     private val udp = NettyMulticastUDPBootstrap("discovery")
 
     private val discoveryFlow = MutableSharedFlow<ClientDiscovery>()
@@ -21,9 +24,6 @@ class UDPDiscoveryBackend : DiscoveryBackend {
     init {
         udp.port = MULTICAST_PORT
         udp.remoteAddress = MULTICAST_ADDRESS
-    }
-
-    override fun open() {
         udp.pipeline = fun(pipeline) {
             pipeline.defaultProtobuf(DiscoveryRequest.getDefaultInstance())
             pipeline.addLast(object : SimpleChannelInboundHandler<DiscoveryRequest>() {

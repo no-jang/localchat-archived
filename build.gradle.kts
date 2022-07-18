@@ -1,4 +1,5 @@
-import com.google.protobuf.gradle.*
+import com.google.protobuf.gradle.protobuf
+import com.google.protobuf.gradle.protoc
 
 plugins {
     application
@@ -13,17 +14,22 @@ plugins {
     id("com.github.ben-manes.versions") version "0.42.0"
 }
 
+// General
+
 group = "de.localchat"
 version = "0.1.0-alpha.1"
 
-repositories {
-    mavenCentral()
-    maven("https://jitpack.io")
+// Source
+
+sourceSets {
+    main {
+        java {
+            srcDir(layout.buildDirectory.dir("generated/ksp/main/kotlin"))
+        }
+    }
 }
 
-application {
-    mainClass.set("de.localchat.Main")
-}
+// Compiler
 
 java {
     toolchain {
@@ -37,10 +43,20 @@ protobuf {
     }
 }
 
-dependencies {
-    // TODO Remove if artifact is released
-    implementation(fileTree("libs"))
+// Running
 
+application {
+    mainClass.set("de.localchat.Main")
+}
+
+// Dependencies
+
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io")
+}
+
+dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
 
@@ -55,10 +71,16 @@ dependencies {
     // Dependency Injection
     implementation("io.insert-koin:koin-core:3.2.0")
     implementation("io.insert-koin:koin-annotations:1.0.1")
+    implementation("io.insert-koin:koin-logger-slf4j:3.2.0")
+    //TODO Remove if pull request accepted
+    //ksp("io.insert-koin:koin-ksp-compiler:1.0.1")
+    ksp("io.insert-koin:koin-annotations:1.0.1")
+    ksp(fileTree("libs/ksp"))
     testImplementation("io.insert-koin:koin-test:3.2.0")
 
     // Network
     implementation("io.netty:netty5-handler:5.0.0.Alpha3")
+    implementation("io.netty.contrib:netty-codec-extras:5.0.0.Alpha1")
 
     implementation("io.netty:netty5-transport-classes-epoll:5.0.0.Alpha3")
     implementation("io.netty:netty5-transport-classes-kqueue:5.0.0.Alpha3")

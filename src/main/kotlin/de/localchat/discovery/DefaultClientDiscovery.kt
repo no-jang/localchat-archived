@@ -1,6 +1,4 @@
-package de.localchat.discovery.common
-
-import de.localchat.discovery.ClientDiscovery
+package de.localchat.discovery
 
 data class DefaultClientDiscovery(override val name: String, override val address: String, override val port: Int) :
     ClientDiscovery
