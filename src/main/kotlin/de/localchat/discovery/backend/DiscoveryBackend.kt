@@ -1,5 +1,6 @@
-package de.localchat.discovery
+package de.localchat.discovery.backend
 
+import de.localchat.discovery.ClientDiscovery
 import kotlinx.coroutines.flow.Flow
 
 interface DiscoveryBackend {

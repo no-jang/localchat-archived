@@ -1,8 +1,7 @@
-package de.localchat.discovery.udp
+package de.localchat.discovery.backend
 
 import de.localchat.discovery.ClientDiscovery
 import de.localchat.discovery.DefaultClientDiscovery
-import de.localchat.discovery.DiscoveryBackend
 import de.localchat.discovery.DiscoveryProtocol.DiscoveryRequest
 import de.localchat.network.netty.pipeline.StandardPipelines.defaultProtobuf
 import de.localchat.network.netty.udp.NettyMulticastUDPBootstrap

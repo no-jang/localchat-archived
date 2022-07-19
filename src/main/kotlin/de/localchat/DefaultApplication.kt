@@ -1,6 +1,6 @@
 package de.localchat
 
-import de.localchat.discovery.DiscoveryBackend
+import de.localchat.discovery.backend.DiscoveryBackend
 import de.localchat.web.WebService
 import de.localchat.web.javlin.JavlinWebService
 import kotlinx.coroutines.delay
