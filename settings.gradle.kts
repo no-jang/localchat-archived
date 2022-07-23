@@ -8,3 +8,6 @@ enableFeaturePreview(Feature.STABLE_CONFIGURATION_CACHE.toString())
 pluginManagement {
     includeBuild("build-logic")
 }
+
+include("backend:app")
+include("backend:common")
