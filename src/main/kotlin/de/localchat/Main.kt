@@ -1,14 +1,20 @@
 package de.localchat
 
-import de.localchat.di.modules.ApplicationModule
-import org.koin.core.context.startKoin
-import org.koin.ksp.generated.module
-import org.koin.logger.SLF4JLogger
+import de.localchat.network.netty.udp.UDPNettyNetwork
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 fun main() {
-    val koinApplication = startKoin {
-        logger(SLF4JLogger())
-        modules(ApplicationModule().module)
-        createEagerInstances()
+    runBlocking {
+        val network = UDPNettyNetwork("test")
+        network.port = 1234
+
+        val connection = network.bind("test")
+
+        launch {
+            delay(5000)
+            network.close()
+        }
     }
 }
