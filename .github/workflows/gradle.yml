@@ -1,0 +1,39 @@
+name: gradle-ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: sudo apt-get install protobuf-compiler
+
+      - name: JDK 18
+        uses: actions/setup-java@v3
+        with:
+          java-version: '18'
+          distribution: 'temurin'
+
+      - name: Build
+        uses: gradle/gradle-build-action@v2.2.1
+        with:
+          arguments: build --no-daemon
+
+      - name: Variables
+        uses: FranzDiebold/github-env-vars-action@v2.3.1
+
+      - name: Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-${{ env.CI_REF_NAME_SLUG }}-${{ env.CI_SHA_SHORT }}
+          path: build/distributions/*
