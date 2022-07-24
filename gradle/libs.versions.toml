@@ -1,14 +1,14 @@
 [versions]
+# Gradle
+detekt = "1.21.0"
+versions = "0.42.0"
+
 # Kotlin
 kotlin = "1.7.10"
 kotlin-coroutines = "1.6.4"
 
 # Logging
 tinylog = "v3.0-SNAPSHOT"
-
-#Gradle
-detekt = "1.21.0"
-versions = "0.42.0"
 
 [libraries]
 # Kotlin
