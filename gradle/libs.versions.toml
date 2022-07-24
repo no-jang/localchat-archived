@@ -1,0 +1,28 @@
+[versions]
+# Kotlin
+kotlin = "1.7.10"
+kotlin-coroutines = "1.6.4"
+
+# Logging
+tinylog = "v3.0-SNAPSHOT"
+
+#Gradle
+versions = "0.42.0"
+
+[libraries]
+# Kotlin
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+# Logging
+tinylog-api = { module = "com.github.tinylog-org.tinylog:tinylog-api", version.ref = "tinylog" }
+tinylog-api-kotlin = { module = "com.github.tinylog-org.tinylog:tinylog-api-kotlin", version.ref = "tinylog" }
+tinylog-impl = { module = "com.github.tinylog-org.tinylog:tinylog-impl", version.ref = "tinylog" }
+tinylog-slf4j = { module = "com.github.tinylog-org.tinylog:slf4j-tinylog", version.ref = "tinylog" }
+
+[bundles]
+# Logging
+tinylog = ["tinylog-api", "tinylog-api-kotlin", "tinylog-impl", "tinylog-slf4j"]
+
+[plugins]
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

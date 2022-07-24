@@ -1,3 +1,3 @@
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    implementation(libs.kotlin.gradle)
 }

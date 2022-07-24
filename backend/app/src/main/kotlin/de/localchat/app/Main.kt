@@ -1,5 +1,8 @@
 package de.localchat.app
 
-fun main() {
+import de.localchat.common.Test
 
+fun main() {
+    Test.print()
+    println("Yes")
 }

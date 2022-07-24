@@ -3,5 +3,9 @@ plugins {
 }
 
 dependencies {
+    // Kotlin
+    api(libs.kotlin.coroutines)
 
+    // Logging
+    api(libs.bundles.tinylog)
 }
