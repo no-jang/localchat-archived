@@ -6,6 +6,8 @@ plugins {
 val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 detekt {
+    parallel = true
+
     config.from(rootProject.layout.projectDirectory.file("config/detekt/detekt.yml"))
 }
 
