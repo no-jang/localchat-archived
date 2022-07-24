@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("jvm")
 
@@ -21,5 +23,11 @@ java {
 dependencies {
     detektPlugins(libs.findLibrary("kotlin.gradle.detekt.formatting").get()) {
         exclude("org.slf4j", "slf4j-nop")
+    }
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs += listOf("-Xuse-k2")
     }
 }
