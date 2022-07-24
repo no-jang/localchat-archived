@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     `kotlin-dsl` apply false
 }
@@ -12,9 +10,10 @@ subprojects {
         gradlePluginPortal()
     }
 
-    tasks.withType<KotlinCompile> {
+    // TODO Enable if K2 supports plugins
+    /*tasks.withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs += listOf("-Xuse-k2")
         }
-    }
+    }*/
 }
