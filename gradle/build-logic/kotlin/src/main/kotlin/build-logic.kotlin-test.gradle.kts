@@ -1,5 +1,7 @@
 plugins {
     id("build-logic.kotlin-base")
+
+    id("org.jetbrains.kotlinx.kover")
 }
 
 val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
