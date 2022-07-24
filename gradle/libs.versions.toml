@@ -10,6 +10,12 @@ kotlin-coroutines = "1.6.4"
 # Logging
 tinylog = "v3.0-SNAPSHOT"
 
+# Testing
+kotest = "5.3.2"
+kotest-gradle = "0.3.9"
+kover = "0.5.1"
+mockk = "1.12.4"
+
 [libraries]
 # Kotlin
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
@@ -24,11 +30,18 @@ tinylog-api-kotlin = { module = "com.github.tinylog-org.tinylog:tinylog-api-kotl
 tinylog-impl = { module = "com.github.tinylog-org.tinylog:tinylog-impl", version.ref = "tinylog" }
 tinylog-slf4j = { module = "com.github.tinylog-org.tinylog:slf4j-tinylog", version.ref = "tinylog" }
 
+# Testing
+kotest-assertions = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
+kotest-junit = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kover-gradle = { module = "org.jetbrains.kotlinx.kover:org.jetbrains.kotlinx.kover.gradle.plugin", version.ref = "kover" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
 [bundles]
 # Logging
 tinylog = ["tinylog-api", "tinylog-api-kotlin", "tinylog-impl", "tinylog-slf4j"]
 
+# Testing
+testing = ["kotest-assertions", "kotest-junit", "mockk"]
+
 [plugins]
-kotlin-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
