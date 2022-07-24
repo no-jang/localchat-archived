@@ -9,7 +9,8 @@ rootProject.name = "localchat"
 enableFeaturePreview(Feature.TYPESAFE_PROJECT_ACCESSORS.toString())
 enableFeaturePreview(Feature.STABLE_CONFIGURATION_CACHE.toString())
 
-includeBuild("build-logic-test")
+// Enable if required
+//includeBuild("build-logic-test")
 
 include("backend:app")
 include("backend:common")
