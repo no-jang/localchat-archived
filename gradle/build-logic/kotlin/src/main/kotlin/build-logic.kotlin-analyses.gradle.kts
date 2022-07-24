@@ -23,6 +23,14 @@ detekt {
     parallel = true
 
     config.from(rootProject.layout.projectDirectory.file("config/detekt/detekt.yml"))
+    source.from(
+        fileTree(layout.projectDirectory) {
+            include("**/*.kts")
+            exclude("**/.gradle")
+            exclude("**/build")
+            exclude("**/src")
+        }
+    )
 }
 
 dependencies {
