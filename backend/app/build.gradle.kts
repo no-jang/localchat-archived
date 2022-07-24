@@ -10,4 +10,6 @@ application {
 
 dependencies {
     implementation(projects.backend.common)
+    implementation(projects.backend.network)
+    implementation(projects.backend.networkNetty)
 }

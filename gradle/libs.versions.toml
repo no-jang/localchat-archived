@@ -10,6 +10,10 @@ kotlin-coroutines = "1.6.4"
 # Logging
 tinylog = "v3.0-SNAPSHOT"
 
+# Networking
+netty = "5.0.0.Alpha3"
+netty-contrib = "5.0.0.Alpha1"
+
 # Testing
 kotest = "5.3.2"
 kotest-gradle = "0.3.9"
@@ -30,6 +34,14 @@ tinylog-api-kotlin = { module = "com.github.tinylog-org.tinylog:tinylog-api-kotl
 tinylog-impl = { module = "com.github.tinylog-org.tinylog:tinylog-impl", version.ref = "tinylog" }
 tinylog-slf4j = { module = "com.github.tinylog-org.tinylog:slf4j-tinylog", version.ref = "tinylog" }
 
+# Networking
+netty-handler = { module = "io.netty:netty5-handler", version.ref = "netty" }
+netty-transport-epoll = { module = "io.netty:netty5-transport-classes-epoll", version.ref = "netty" }
+netty-transport-kqueue = { module = "io.netty:netty5-transport-classes-kqueue", version.ref = "netty" }
+netty-contrib = { module = "io.netty.contrib:netty-codec-extras", version.ref = "netty-contrib" }
+netty-native-epoll = { module = "io.netty:netty5-transport-native-epoll", version.ref = "netty" }
+netty-native-kqueue = { module = "io.netty:netty5-transport-native-kqueue", version.ref = "netty" }
+
 # Testing
 kotest-assertions = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
 kotest-junit = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
@@ -39,6 +51,10 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 [bundles]
 # Logging
 tinylog = ["tinylog-api", "tinylog-api-kotlin", "tinylog-impl", "tinylog-slf4j"]
+
+# Networking
+netty = ["netty-handler", "netty-transport-epoll", "netty-transport-kqueue", "netty-contrib"]
+netty-native = ["netty-native-epoll", "netty-native-kqueue"]
 
 # Testing
 testing = ["kotest-assertions", "kotest-junit", "mockk"]
