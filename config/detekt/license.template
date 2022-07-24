@@ -11,12 +11,3 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-
-package de.localchat.app
-
-/**
- * Entry point for the application.
- */
-fun main() {
-    println("Hello, World!")
-}
