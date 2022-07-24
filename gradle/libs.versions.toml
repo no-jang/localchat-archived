@@ -16,6 +16,7 @@ kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", 
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-gradle-detekt = { module = "io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt" }
 kotlin-gradle-detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+kotlin-gradle-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "kotlin" }
 
 # Logging
 tinylog-api = { module = "com.github.tinylog-org.tinylog:tinylog-api", version.ref = "tinylog" }
@@ -28,5 +29,6 @@ tinylog-slf4j = { module = "com.github.tinylog-org.tinylog:slf4j-tinylog", versi
 tinylog = ["tinylog-api", "tinylog-api-kotlin", "tinylog-impl", "tinylog-slf4j"]
 
 [plugins]
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+kotlin-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
