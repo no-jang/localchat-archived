@@ -12,10 +12,6 @@
  * GNU General Public License for more details.
  */
 
-plugins {
-    id("build-logic.kotlin")
-}
+package de.localchat.network
 
-dependencies {
-    api(projects.backend.common)
-}
+interface Bootstrap

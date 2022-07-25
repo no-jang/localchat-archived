@@ -44,7 +44,7 @@ interface NettyEnvironment : Environment {
     /**
      * [Environment.Factory] for [NettyEnvironment]s.
      */
-    interface Factory : Environment.Factory<NettyEnvironment>
+    interface Factory : Environment.Factory<NettyEnvironment, Type>
 
     /**
      * Creates new [IoHandlerFactory] usally used for creating an [io.netty5.channel.EventLoopGroup].

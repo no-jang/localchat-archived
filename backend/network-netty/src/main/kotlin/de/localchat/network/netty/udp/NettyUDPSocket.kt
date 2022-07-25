@@ -12,10 +12,26 @@
  * GNU General Public License for more details.
  */
 
-plugins {
-    id("build-logic.kotlin")
-}
+package de.localchat.network.netty.udp
 
-dependencies {
-    api(projects.backend.common)
-}
+/*
+class NettyUDPSocket(
+    val name: String,
+    val port: Int,
+    private val pool: NettyUDPPool,
+    private val channel: DatagramChannel
+) {
+    fun send(o: Any) {
+        channel.writeAndFlush(o)
+    }
+
+    fun close() {
+        doClose()
+        pool.socketClosed(this)
+    }
+
+    internal fun doClose() {
+        Logger.debug("Close udp socket {}, pool: {}, port: {}", name, pool.name, port)
+        channel.close()
+    }
+}*/

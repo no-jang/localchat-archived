@@ -14,9 +14,22 @@
 
 package de.localchat.app
 
+import de.localchat.network.netty.udp.NettyUDPPool
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 /**
  * Entry point for the application.
  */
 fun main() {
-    println("Hello, World!")
+    runBlocking {
+        val pool = NettyUDPPool("pool")
+        val socket = pool.bind("socket", 1234)
+
+        launch {
+            delay(5000)
+            pool.close()
+        }
+    }
 }

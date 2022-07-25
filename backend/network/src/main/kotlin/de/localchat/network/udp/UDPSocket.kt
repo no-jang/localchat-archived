@@ -12,10 +12,8 @@
  * GNU General Public License for more details.
  */
 
-plugins {
-    id("build-logic.kotlin")
-}
+package de.localchat.network.udp
 
-dependencies {
-    api(projects.backend.common)
-}
+import de.localchat.network.Socket
+
+interface UDPSocket : Socket

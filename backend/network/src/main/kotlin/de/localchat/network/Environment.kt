@@ -34,16 +34,16 @@ interface Environment {
     /**
      * Factory class to provide the supported environment types and create a new one.
      */
-    interface Factory<T : Environment> {
+    interface Factory<E : Environment, T : Type> {
         /**
-         * Returns the list of supported environment types. These are ordered how recommended they are to be used.
+         * Returns the suggested environment type.
          */
-        fun checkSupportedTypes(): List<Type>
+        fun getSuggestedType(): T
 
         /**
          * Creates a new environment of the given type.
          */
-        fun newEnvironment(type: Type): T
+        fun newEnvironment(type: T): E
     }
 
     /**

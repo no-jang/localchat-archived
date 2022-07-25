@@ -12,10 +12,12 @@
  * GNU General Public License for more details.
  */
 
-plugins {
-    id("build-logic.kotlin")
-}
+package de.localchat.network.netty.util
 
-dependencies {
-    api(projects.backend.common)
-}
+import io.netty5.channel.Channel
+import io.netty5.util.concurrent.Future
+
+fun <C : Channel> Future<C>.waitForFuture(): C =
+    asStage()
+        .sync()
+        .get()

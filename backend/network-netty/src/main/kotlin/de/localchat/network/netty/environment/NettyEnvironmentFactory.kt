@@ -14,7 +14,6 @@
 
 package de.localchat.network.netty.environment
 
-import de.localchat.network.Environment
 import io.netty5.channel.epoll.Epoll
 import io.netty5.channel.kqueue.KQueue
 
@@ -22,28 +21,21 @@ import io.netty5.channel.kqueue.KQueue
  * Implementation of [NettyEnvironment.Factory] for default purposes. There is no need to create another implementation.
  */
 class NettyEnvironmentFactory : NettyEnvironment.Factory {
-    override fun checkSupportedTypes(): List<Environment.Type> {
-        val types = mutableListOf<Environment.Type>()
-
-        if (Epoll.isAvailable()) {
-            types.add(NettyEnvironment.Type.EPOLL)
+    override fun getSuggestedType(): NettyEnvironment.Type {
+        return if (Epoll.isAvailable()) {
+            NettyEnvironment.Type.EPOLL
         } else if (KQueue.isAvailable()) {
-            types.add(NettyEnvironment.Type.KQUEUE)
+            NettyEnvironment.Type.KQUEUE
+        } else {
+            NettyEnvironment.Type.NIO
         }
-
-        types.add(NettyEnvironment.Type.NIO)
-
-        return types
     }
 
-    override fun newEnvironment(type: Environment.Type): NettyEnvironment {
+    override fun newEnvironment(type: NettyEnvironment.Type): NettyEnvironment {
         return when (type) {
             NettyEnvironment.Type.EPOLL -> EpollNettyEnvironment()
             NettyEnvironment.Type.KQUEUE -> KQueueNettyEnvironment()
             NettyEnvironment.Type.NIO -> NIONettyEnvironment()
-            else -> {
-                throw IllegalArgumentException("Unknown netty environment type: $type")
-            }
         }
     }
 }

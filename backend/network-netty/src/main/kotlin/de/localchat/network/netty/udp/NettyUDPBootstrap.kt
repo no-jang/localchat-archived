@@ -12,10 +12,6 @@
  * GNU General Public License for more details.
  */
 
-plugins {
-    id("build-logic.kotlin")
-}
+package de.localchat.network.netty.udp
 
-dependencies {
-    api(projects.backend.common)
-}
+class NettyUDPBootstrap

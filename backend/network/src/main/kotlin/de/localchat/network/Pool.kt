@@ -12,10 +12,10 @@
  * GNU General Public License for more details.
  */
 
-plugins {
-    id("build-logic.kotlin")
-}
+package de.localchat.network
 
-dependencies {
-    api(projects.backend.common)
+import de.localchat.network.udp.UDPSocket
+
+interface Pool : AutoCloseable {
+    fun bindDatagramSocket(name: String, port: Int): UDPSocket
 }
