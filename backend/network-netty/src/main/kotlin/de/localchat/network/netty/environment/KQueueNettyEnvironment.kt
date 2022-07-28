@@ -14,7 +14,6 @@
 
 package de.localchat.network.netty.environment
 
-import de.localchat.network.Environment
 import io.netty5.channel.ChannelFactory
 import io.netty5.channel.IoHandlerFactory
 import io.netty5.channel.ServerChannelFactory
@@ -31,7 +30,7 @@ import io.netty5.channel.socket.SocketChannel
  * only usable on BSD based systems.
  */
 class KQueueNettyEnvironment : NettyEnvironment {
-    override fun getType(): Environment.Type = NettyEnvironment.Type.KQUEUE
+    override fun getName(): String = "kqueue"
 
     override fun newHandlerFactory(): IoHandlerFactory =
         KQueueHandler.newFactory()

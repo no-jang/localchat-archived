@@ -12,6 +12,26 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network
+package de.localchat.network.netty.old
 
-interface ServerSocket : Socket
+/*
+class NettyUDPSocket(
+    val name: String,
+    val port: Int,
+    private val pool: NettyUDPPool,
+    private val channel: DatagramChannel
+) {
+    fun send(o: Any) {
+        channel.writeAndFlush(o)
+    }
+
+    fun close() {
+        doClose()
+        pool.socketClosed(this)
+    }
+
+    internal fun doClose() {
+        Logger.debug("Close udp socket {}, pool: {}, port: {}", name, pool.name, port)
+        channel.close()
+    }
+}*/

@@ -12,6 +12,23 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network
+package de.localchat.network.socket
 
-interface Coder
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+
+abstract class AbstractSocket(
+    private val name: String,
+    private val port: Int
+) : Socket {
+    protected val closeFlow: MutableSharedFlow<Unit> = MutableSharedFlow()
+
+    override fun getName(): String = name
+    override fun getPort(): Int = port
+
+    override fun close() {
+        closeFlow.tryEmit(Unit)
+    }
+
+    override fun closeFlow(): Flow<Unit> = closeFlow
+}

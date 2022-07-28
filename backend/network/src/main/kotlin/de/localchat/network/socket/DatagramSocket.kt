@@ -12,10 +12,10 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network
+package de.localchat.network.socket
 
-import de.localchat.network.udp.UDPSocket
-
-interface Pool : AutoCloseable {
-    fun bindDatagramSocket(name: String, port: Int): UDPSocket
+interface DatagramSocket : Socket {
+    interface Factory {
+        fun newDatagramSocket(name: String, port: Int): DatagramSocket
+    }
 }

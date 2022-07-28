@@ -12,6 +12,10 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network
+package de.localchat.common.lifecycle
 
-interface Bootstrap
+import kotlinx.coroutines.flow.Flow
+
+interface Closeable : AutoCloseable {
+    fun closeFlow(): Flow<Unit>
+}

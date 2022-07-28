@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network.netty.udp
+package de.localchat.network.netty.old
 
 import de.localchat.network.netty.environment.NettyEnvironmentFactory
 import de.localchat.network.netty.util.waitForFuture

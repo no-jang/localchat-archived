@@ -14,7 +14,6 @@
 
 package de.localchat.network.netty.environment
 
-import de.localchat.network.Environment
 import io.netty5.channel.ChannelFactory
 import io.netty5.channel.IoHandlerFactory
 import io.netty5.channel.ServerChannelFactory
@@ -31,7 +30,7 @@ import io.netty5.channel.socket.nio.NioSocketChannel
  * every system java supports.
  */
 class NIONettyEnvironment : NettyEnvironment {
-    override fun getType(): Environment.Type = NettyEnvironment.Type.NIO
+    override fun getName(): String = "nio"
 
     override fun newHandlerFactory(): IoHandlerFactory =
         NioHandler.newFactory()

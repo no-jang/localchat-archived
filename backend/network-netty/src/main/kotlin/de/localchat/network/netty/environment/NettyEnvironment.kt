@@ -26,25 +26,10 @@ import io.netty5.channel.socket.SocketChannel
  * Defines the environment dependant components that are required to start a netty server/client.
  */
 interface NettyEnvironment : Environment {
-
-    /**
-     * Default supported environment types by netty.
-     * Epoll is for Linux based systems,
-     * Kqueue is for BSD based systems,
-     * Nio is for all systems the jvm runs on.
-     */
-    enum class Type(private val _name: String) : Environment.Type {
-        EPOLL("epoll"),
-        KQUEUE("kqueue"),
-        NIO("nio");
-
-        override fun getName(): String = _name
-    }
-
     /**
      * [Environment.Factory] for [NettyEnvironment]s.
      */
-    interface Factory : Environment.Factory<NettyEnvironment, Type>
+    interface Factory : Environment.Factory<NettyEnvironment>
 
     /**
      * Creates new [IoHandlerFactory] usally used for creating an [io.netty5.channel.EventLoopGroup].

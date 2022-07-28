@@ -12,6 +12,14 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network.netty.udp
+package de.localchat.network.socket
 
-class NettyUDPBootstrap
+import de.localchat.common.lifecycle.Closeable
+
+interface Socket : Closeable {
+    interface Factory
+
+    fun getName(): String
+
+    fun getPort(): Int
+}

@@ -14,7 +14,6 @@
 
 package de.localchat.network.netty.environment
 
-import de.localchat.network.Environment
 import io.netty5.channel.ChannelFactory
 import io.netty5.channel.IoHandlerFactory
 import io.netty5.channel.ServerChannelFactory
@@ -31,7 +30,7 @@ import io.netty5.channel.socket.SocketChannel
  * on linux based systems.
  */
 class EpollNettyEnvironment : NettyEnvironment {
-    override fun getType(): Environment.Type = NettyEnvironment.Type.EPOLL
+    override fun getName(): String = "epoll"
 
     override fun newHandlerFactory(): IoHandlerFactory =
         EpollHandler.newFactory()

@@ -21,21 +21,13 @@ import io.netty5.channel.kqueue.KQueue
  * Implementation of [NettyEnvironment.Factory] for default purposes. There is no need to create another implementation.
  */
 class NettyEnvironmentFactory : NettyEnvironment.Factory {
-    override fun getSuggestedType(): NettyEnvironment.Type {
+    override fun newEnvironment(): NettyEnvironment {
         return if (Epoll.isAvailable()) {
-            NettyEnvironment.Type.EPOLL
+            EpollNettyEnvironment()
         } else if (KQueue.isAvailable()) {
-            NettyEnvironment.Type.KQUEUE
+            KQueueNettyEnvironment()
         } else {
-            NettyEnvironment.Type.NIO
-        }
-    }
-
-    override fun newEnvironment(type: NettyEnvironment.Type): NettyEnvironment {
-        return when (type) {
-            NettyEnvironment.Type.EPOLL -> EpollNettyEnvironment()
-            NettyEnvironment.Type.KQUEUE -> KQueueNettyEnvironment()
-            NettyEnvironment.Type.NIO -> NIONettyEnvironment()
+            NIONettyEnvironment()
         }
     }
 }

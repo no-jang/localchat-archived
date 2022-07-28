@@ -12,6 +12,10 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network
+package de.localchat.network.socket
 
-interface Processor
+interface ServerSocket : Socket {
+    interface Factory {
+        fun newServerSocket(name: String, port: Int): ServerSocket
+    }
+}

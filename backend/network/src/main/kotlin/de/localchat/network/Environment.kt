@@ -19,35 +19,15 @@ package de.localchat.network
  * There should be one implementation for each platform.
  */
 interface Environment {
-
     /**
-     * This interface should be implemented by an enum class that contains all possible environments for the networking
-     * backend.
+     * Factory class to create a new [Environment] that is supported on the local platform.
      */
-    interface Type {
+    interface Factory<E : Environment> {
         /**
-         * The user-friendly name of the environment.
+         * Creates a new on the current platform supported environment.
          */
-        fun getName(): String
+        fun newEnvironment(): E
     }
 
-    /**
-     * Factory class to provide the supported environment types and create a new one.
-     */
-    interface Factory<E : Environment, T : Type> {
-        /**
-         * Returns the suggested environment type.
-         */
-        fun getSuggestedType(): T
-
-        /**
-         * Creates a new environment of the given type.
-         */
-        fun newEnvironment(type: T): E
-    }
-
-    /**
-     * The [Type] of the environment.
-     */
-    fun getType(): Type
+    fun getName(): String
 }
