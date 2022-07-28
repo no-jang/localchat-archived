@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network
+package de.localchat.network.old
 
 /**
  * This interface is intended to create networking resources that depends on the underlying platform (OS).

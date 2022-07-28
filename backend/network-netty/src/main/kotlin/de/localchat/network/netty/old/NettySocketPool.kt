@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network.netty
+package de.localchat.network.netty.old
 
 import de.localchat.network.Environment
 import de.localchat.network.netty.environment.NettyEnvironment
