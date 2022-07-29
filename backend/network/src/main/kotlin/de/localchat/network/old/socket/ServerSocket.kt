@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network.socket
+package de.localchat.network.old.socket
 
 interface ServerSocket : Socket {
     interface Factory {

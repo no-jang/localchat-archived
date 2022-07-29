@@ -12,12 +12,10 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network.old.socket
+package de.localchat.network.socket
 
-interface ClientSocket : Socket {
+interface ServerSocket : Socket {
     interface Factory {
-        fun newClientSocket(name: String, remoteAddress: String, port: Int): ClientSocket
+        fun newServerSocket(name: String, port: Int): ServerSocket
     }
-
-    fun getRemoteAddress(): String
 }

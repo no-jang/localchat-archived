@@ -12,12 +12,12 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network.old.socket
+package de.localchat.network.connection
 
-interface ClientSocket : Socket {
-    interface Factory {
-        fun newClientSocket(name: String, remoteAddress: String, port: Int): ClientSocket
-    }
+import de.localchat.common.lifecycle.Closeable
+
+interface Connection : Closeable {
+    fun getPort(): Int
 
     fun getRemoteAddress(): String
 }

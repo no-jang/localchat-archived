@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network.pool
+package de.localchat.network.old.pool
 
 import de.localchat.common.lifecycle.Closeable
 import de.localchat.network.socket.ClientSocket
