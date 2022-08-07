@@ -12,30 +12,36 @@
  * GNU General Public License for more details.
  */
 
-package de.localchat.network.netty
+package de.localchat.network.netty.environment
 
-import de.localchat.network.netty.environment.NettyEnvironmentFactory
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.shouldBe
+import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.types.shouldBeInstanceOf
-import io.mockk.every
-import io.mockk.mockkStatic
 import io.netty5.channel.ChannelFactory
 import io.netty5.channel.epoll.*
 
 class NettyEnvironmentFactoryTest : FunSpec({
     test("CreateEpollNettyEnvironmentIfEpollIsAvailable") {
-        mockkStatic(Epoll::class)
-
-        Epoll.isAvailable() shouldBe true
-        every { Epoll.isAvailable() } returns true
+        Epoll.isAvailable().shouldBeTrue()
 
         val factory = NettyEnvironmentFactory()
         val environment = factory.newEnvironment()
 
-        environment.newHandlerFactory().shouldBeInstanceOf<EpollHandler>()
-        environment.newDatagramChannelFactory().shouldBeInstanceOf<ChannelFactory<EpollDatagramChannel>>()
-        environment.newSocketChannelFactory().shouldBeInstanceOf<ChannelFactory<EpollSocketChannel>>()
-        environment.newServerSocketChannelFactory().shouldBeInstanceOf<ChannelFactory<EpollServerSocketChannel>>()
+        environment
+            .newHandlerFactory()
+            .newHandler()
+            .shouldBeInstanceOf<EpollHandler>()
+
+        environment
+            .newDatagramChannelFactory()
+            .shouldBeInstanceOf<ChannelFactory<EpollDatagramChannel>>()
+
+        environment
+            .newSocketChannelFactory()
+            .shouldBeInstanceOf<ChannelFactory<EpollSocketChannel>>()
+
+        environment
+            .newServerSocketChannelFactory()
+            .shouldBeInstanceOf<ChannelFactory<EpollServerSocketChannel>>()
     }
 })

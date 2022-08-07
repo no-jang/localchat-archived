@@ -30,6 +30,6 @@ java {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        freeCompilerArgs += listOf("-Xuse-k2")
+        freeCompilerArgs = freeCompilerArgs + listOf("-Xuse-k2")
     }
 }

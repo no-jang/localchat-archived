@@ -12,12 +12,10 @@
  * GNU General Public License for more details.
  */
 
-plugins {
-    id("build-logic.kotlin")
-}
+package common
 
-dependencies {
-    api(projects.backend.common)
+import io.kotest.core.Tag
 
-    testApi(testFixtures(projects.backend.common))
-}
+object Windows : Tag()
+object Linux : Tag()
+object MacOS : Tag()
