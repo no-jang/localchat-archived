@@ -17,30 +17,26 @@ package de.localchat.network.netty.environment
 import io.netty5.channel.ChannelFactory
 import io.netty5.channel.IoHandlerFactory
 import io.netty5.channel.ServerChannelFactory
-import io.netty5.channel.kqueue.KQueueDatagramChannel
-import io.netty5.channel.kqueue.KQueueHandler
-import io.netty5.channel.kqueue.KQueueServerSocketChannel
-import io.netty5.channel.kqueue.KQueueSocketChannel
+import io.netty5.channel.epoll.EpollDatagramChannel
+import io.netty5.channel.epoll.EpollHandler
+import io.netty5.channel.epoll.EpollServerSocketChannel
+import io.netty5.channel.epoll.EpollSocketChannel
 import io.netty5.channel.socket.DatagramChannel
 import io.netty5.channel.socket.ServerSocketChannel
 import io.netty5.channel.socket.SocketChannel
 
-/**
- * Implementation of the netty kqueue environment. It bases on the bsd kernel kqueue network interface and so is
- * only usable on BSD based systems.
- */
-class KQueueNettyEnvironment : NettyEnvironment {
-    override fun getName(): String = "kqueue"
+class EpollNettyEnvironment : NettyEnvironment {
+    override fun getName(): String = "epoll"
 
     override fun newHandlerFactory(): IoHandlerFactory =
-        KQueueHandler.newFactory()
+        EpollHandler.newFactory()
 
     override fun newDatagramChannelFactory(): ChannelFactory<DatagramChannel> =
-        ChannelFactory { eventLoop -> KQueueDatagramChannel(eventLoop) }
+        ChannelFactory { eventLoop -> EpollDatagramChannel(eventLoop) }
 
     override fun newSocketChannelFactory(): ChannelFactory<SocketChannel> =
-        ChannelFactory { eventLoop -> KQueueSocketChannel(eventLoop) }
+        ChannelFactory { eventLoop -> EpollSocketChannel(eventLoop) }
 
     override fun newServerSocketChannelFactory(): ServerChannelFactory<ServerSocketChannel> =
-        ServerChannelFactory { eventLoop, eventLoopGroup -> KQueueServerSocketChannel(eventLoop, eventLoopGroup) }
+        ServerChannelFactory { eventLoop, eventLoopGroup -> EpollServerSocketChannel(eventLoop, eventLoopGroup) }
 }

@@ -20,6 +20,7 @@ plugins {
 
 application {
     mainClass.set("de.localchat.app.MainKt")
+    applicationDefaultJvmArgs = listOf("--add-opens", "java.base/jdk.internal.misc=ALL-UNNAMED")
 }
 
 dependencies {

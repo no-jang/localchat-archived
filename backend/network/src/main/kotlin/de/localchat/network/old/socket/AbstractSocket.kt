@@ -30,5 +30,5 @@ abstract class AbstractSocket(
         closeFlow.tryEmit(Unit)
     }
 
-    override fun closeFlow(): Flow<Unit> = closeFlow
+    override fun onClose(): Flow<Unit> = closeFlow
 }

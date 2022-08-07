@@ -14,7 +14,7 @@
 
 package de.localchat.network.pool
 
-import de.localchat.network.Environment
+import de.localchat.network.environment.Environment
 import de.localchat.network.socket.ClientSocket
 import de.localchat.network.socket.DatagramSocket
 import de.localchat.network.socket.ServerSocket
@@ -61,7 +61,7 @@ abstract class AbstractSocketPool<E : Environment> : SocketPool {
         datagramSockets.clear()
     }
 
-    override fun closeFlow(): Flow<Nothing> {
+    override fun onClose(): Flow<Nothing> {
         TODO("Not yet implemented")
     }
 }

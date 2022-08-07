@@ -10,7 +10,8 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- */
+ *//*
+
 
 package de.localchat.network.netty.old
 
@@ -76,4 +77,4 @@ class NettyUDPPool(val name: String) {
     internal fun socketClosed(socket: NettyUDPSocket) {
         sockets.remove(socket)
     }
-}
+}*/

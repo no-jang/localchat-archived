@@ -25,10 +25,6 @@ import io.netty5.channel.socket.nio.NioDatagramChannel
 import io.netty5.channel.socket.nio.NioServerSocketChannel
 import io.netty5.channel.socket.nio.NioSocketChannel
 
-/**
- * Implementation of the netty nio environment. It uses the nio from the standard java library and so is usable from
- * every system java supports.
- */
 class NIONettyEnvironment : NettyEnvironment {
     override fun getName(): String = "nio"
 
@@ -43,4 +39,5 @@ class NIONettyEnvironment : NettyEnvironment {
 
     override fun newServerSocketChannelFactory(): ServerChannelFactory<ServerSocketChannel> =
         ServerChannelFactory { eventLoop, eventLoopGroup -> NioServerSocketChannel(eventLoop, eventLoopGroup) }
+
 }

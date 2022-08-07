@@ -14,7 +14,7 @@
 
 package de.localchat.network.netty.environment
 
-import de.localchat.network.Environment
+import de.localchat.network.environment.Environment
 import io.netty5.channel.ChannelFactory
 import io.netty5.channel.IoHandlerFactory
 import io.netty5.channel.ServerChannelFactory
@@ -22,32 +22,14 @@ import io.netty5.channel.socket.DatagramChannel
 import io.netty5.channel.socket.ServerSocketChannel
 import io.netty5.channel.socket.SocketChannel
 
-/**
- * Defines the environment dependant components that are required to start a netty server/client.
- */
 interface NettyEnvironment : Environment {
-    /**
-     * [Environment.Factory] for [NettyEnvironment]s.
-     */
     interface Factory : Environment.Factory<NettyEnvironment>
 
-    /**
-     * Creates new [IoHandlerFactory] usally used for creating an [io.netty5.channel.EventLoopGroup].
-     */
     fun newHandlerFactory(): IoHandlerFactory
 
-    /**
-     * Creates new [ChannelFactory] that creates new datagram channels for udp connections.
-     */
     fun newDatagramChannelFactory(): ChannelFactory<DatagramChannel>
 
-    /**
-     * Creates new [ChannelFactory] that creates new socket channels for tcp connections to a server.
-     */
     fun newSocketChannelFactory(): ChannelFactory<SocketChannel>
 
-    /**
-     * Creates new [ChannelFactory] that creates new socket channels for server tcp bindings.
-     */
     fun newServerSocketChannelFactory(): ServerChannelFactory<ServerSocketChannel>
 }

@@ -14,7 +14,8 @@
 
 package de.localchat.network.netty.old
 
-import de.localchat.network.Environment
+/*
+import de.localchat.network.environment.Environment
 import de.localchat.network.netty.environment.NettyEnvironment
 import de.localchat.network.netty.environment.NettyEnvironmentFactory
 import de.localchat.network.pool.AbstractSocketPool
@@ -49,4 +50,4 @@ class NettySocketPool : AbstractSocketPool<NettyEnvironment>() {
         super.close()
         eventLoopGroup.shutdownGracefully()
     }
-}
+}*/

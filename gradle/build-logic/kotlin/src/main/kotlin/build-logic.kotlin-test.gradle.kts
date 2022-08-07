@@ -26,4 +26,6 @@ dependencies {
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
+
+    jvmArgs("--add-opens java.base/jdk.internal.misc=ALL-UNNAMED".split(" "))
 }
