@@ -3,7 +3,7 @@
 versions = "0.42.0"
 
 # Kotlin
-kotlin = "1.7.10"
+kotlin = "1.7.20-Beta"
 
 [libraries]
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
