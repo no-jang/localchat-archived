@@ -11,3 +11,6 @@ enableFeaturePreview(Feature.STABLE_CONFIGURATION_CACHE.toString())
 
 include("backend:app")
 include("backend:common")
+include("backend:network")
+include("backend:network:library")
+include("backend:network:library:netty")
