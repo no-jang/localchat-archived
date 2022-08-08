@@ -44,7 +44,6 @@ tinylog = ["tinylog-api", "tinylog-api-kotlin", "tinylog-impl", "tinylog-slf4j"]
 
 # Networking
 netty = ["netty-handler", "netty-contrib", "netty-transport-epoll", "netty-transport-kqueue"]
-netty-native = ["netty-native-epoll", "netty-native-kqueue"]
 
 # Testing
 kotest = ["kotest-assertions", "kotest-junit"]
