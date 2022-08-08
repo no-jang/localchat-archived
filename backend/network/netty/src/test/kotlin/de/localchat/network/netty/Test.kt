@@ -1,4 +1,4 @@
-package de.localchat.network.library.netty
+package de.localchat.network.netty
 
 
 import de.localchat.common.enabledIfLinux

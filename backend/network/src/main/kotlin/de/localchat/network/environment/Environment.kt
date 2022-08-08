@@ -1,4 +1,4 @@
-package de.localchat.network.library.environment
+package de.localchat.network.environment
 
 interface Environment {
     interface Factory<E : Environment> {

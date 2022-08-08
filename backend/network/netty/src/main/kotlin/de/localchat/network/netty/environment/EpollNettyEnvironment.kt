@@ -1,4 +1,4 @@
-package de.localchat.network.library.netty.environment
+package de.localchat.network.netty.environment
 
 import io.netty5.channel.ChannelFactory
 import io.netty5.channel.IoHandlerFactory

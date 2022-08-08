@@ -1,4 +1,4 @@
-package de.localchat.network.library.netty.environment
+package de.localchat.network.netty.environment
 
 import io.netty5.channel.epoll.Epoll
 import io.netty5.channel.kqueue.KQueue
