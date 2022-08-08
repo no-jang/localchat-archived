@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.backend.common)
+    implementation(projects.backend.network.library.netty)
     testFixturesImplementation(testFixtures(projects.backend.common))
 }

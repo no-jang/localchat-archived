@@ -1,5 +1,10 @@
 package de.localchat.app
 
-fun main() {
+import de.localchat.network.library.netty.environment.DefaultNettyEnvironmentFactory
 
+fun main() {
+    val factory = DefaultNettyEnvironmentFactory()
+    val environment = factory.newEnvironment()
+
+    println(environment.getName())
 }
