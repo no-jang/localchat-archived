@@ -9,5 +9,5 @@ application {
 }
 
 dependencies {
-    implementation(projects.backend.network.library.netty)
+    implementation(projects.backend.network.netty)
 }

@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    api(projects.backend.network.library)
+    api(projects.backend.network)
     implementation(libs.bundles.netty)
 
     runtimeOnly(variantOf(libs.netty.native.epoll) { classifier("linux-x86_64") })
