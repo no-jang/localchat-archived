@@ -5,6 +5,13 @@ versions = "0.42.0"
 # Kotlin
 kotlin = "1.7.20-Beta"
 
+# Logging
+tinylog = "v3.0-SNAPSHOT"
+
+# Networking
+netty = "5.0.0.Alpha4"
+netty-contrib = "5.0.0.Alpha1"
+
 # Testing
 kotest = "5.4.1"
 mockk = "1.12.4"
@@ -13,13 +20,34 @@ mockk = "1.12.4"
 # Kotlin
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
+# Logging
+tinylog-api = { module = "com.github.tinylog-org.tinylog:tinylog-api", version.ref = "tinylog" }
+tinylog-api-kotlin = { module = "com.github.tinylog-org.tinylog:tinylog-api-kotlin", version.ref = "tinylog" }
+tinylog-impl = { module = "com.github.tinylog-org.tinylog:tinylog-impl", version.ref = "tinylog" }
+tinylog-slf4j = { module = "com.github.tinylog-org.tinylog:slf4j-tinylog", version.ref = "tinylog" }
+
+# Networking
+netty-contrib = { module = "io.netty.contrib:netty-codec-extras", version.ref = "netty-contrib" }
+netty-handler = { module = "io.netty:netty5-handler", version.ref = "netty" }
+netty-native-epoll = { module = "io.netty:netty5-transport-native-epoll", version.ref = "netty" }
+netty-native-kqueue = { module = "io.netty:netty5-transport-native-kqueue", version.ref = "netty" }
+netty-transport-epoll = { module = "io.netty:netty5-transport-classes-epoll", version.ref = "netty" }
+netty-transport-kqueue = { module = "io.netty:netty5-transport-classes-kqueue", version.ref = "netty" }
+
 # Testing
 kotest-assertions = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
 kotest-junit = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 
 [bundles]
+# Logging
+tinylog = ["tinylog-api", "tinylog-api-kotlin", "tinylog-impl", "tinylog-slf4j"]
+
+# Networking
+netty = ["netty-handler", "netty-contrib", "netty-transport-epoll", "netty-transport-kqueue"]
+netty-native = ["netty-native-epoll", "netty-native-kqueue"]
+
 # Testing
-testing = ["kotest-assertions", "kotest-junit"]
+kotest = ["kotest-assertions", "kotest-junit"]
 
 [plugins]
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

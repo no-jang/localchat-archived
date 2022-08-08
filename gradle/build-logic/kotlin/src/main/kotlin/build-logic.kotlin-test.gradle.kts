@@ -5,7 +5,7 @@ plugins {
 }
 
 val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
-val testingBundle = libs.findBundle("testing").get()
+val testingBundle = libs.findBundle("kotest").get()
 
 dependencies {
     testImplementation(testingBundle)
