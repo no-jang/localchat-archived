@@ -4,6 +4,7 @@ versions = "0.42.0"
 
 # Kotlin
 kotlin = "1.7.20-Beta"
+kotlin-coroutines = "1.6.4"
 
 # Logging
 tinylog = "v3.0-SNAPSHOT"
@@ -18,6 +19,7 @@ mockk = "1.12.4"
 
 [libraries]
 # Kotlin
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
 # Logging
