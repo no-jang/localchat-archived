@@ -1,9 +1,6 @@
-package de.localchat.network.pool
+package de.localchat.network.hold
 
 import de.localchat.common.lifecycle.Closeable
-import de.localchat.network.socket.ClientSocket
-import de.localchat.network.socket.DatagramSocket
-import de.localchat.network.socket.ServerSocket
 
 interface SocketPool : Closeable {
     fun connect(name: String, remoteAddress: String, port: Int): ClientSocket

@@ -1,11 +1,9 @@
-package de.localchat.network.netty.pool
+package de.localchat.network.netty.hold
 
-import de.localchat.network.netty.environment.NettyEnvironment
-import de.localchat.network.netty.environment.NettyEnvironmentFactory
-import de.localchat.network.pool.AbstractSocketPool
-import de.localchat.network.socket.ClientSocket
-import de.localchat.network.socket.DatagramSocket
-import de.localchat.network.socket.ServerSocket
+import de.localchat.network.hold.AbstractSocketPool
+import de.localchat.network.hold.ClientSocket
+import de.localchat.network.hold.DatagramSocket
+import de.localchat.network.hold.ServerSocket
 import io.netty5.channel.MultithreadEventLoopGroup
 import org.slf4j.LoggerFactory
 

@@ -1,4 +1,4 @@
-package de.localchat.network.environment
+package de.localchat.network.hold
 
 interface Environment {
     val name: String

@@ -3,6 +3,8 @@ package de.localchat.network.netty.environment
 import de.localchat.common.enabledIfLinux
 import de.localchat.common.enabledIfMacOS
 import de.localchat.common.enabledIfWindows
+import de.localchat.network.netty.hold.EpollNettyEnvironment
+import de.localchat.network.netty.hold.NIONettyEnvironment
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf

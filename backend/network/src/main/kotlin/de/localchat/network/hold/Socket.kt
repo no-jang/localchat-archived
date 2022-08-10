@@ -1,7 +1,6 @@
-package de.localchat.network.socket
+package de.localchat.network.hold
 
 import de.localchat.common.lifecycle.Closeable
-import de.localchat.network.connection.Connection
 
 interface Socket : Closeable {
     val name: String

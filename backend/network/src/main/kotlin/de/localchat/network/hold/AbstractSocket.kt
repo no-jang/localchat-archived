@@ -1,8 +1,6 @@
-package de.localchat.network.socket
+package de.localchat.network.hold
 
 import de.localchat.common.lifecycle.AbstractCloseable
-import de.localchat.network.connection.Connection
-import de.localchat.network.environment.Environment
 import org.slf4j.Logger
 
 abstract class AbstractSocket<E : Environment>(

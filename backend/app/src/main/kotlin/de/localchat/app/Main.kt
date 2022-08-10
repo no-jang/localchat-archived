@@ -1,6 +1,6 @@
 package de.localchat.app
 
-import de.localchat.network.netty.environment.NettyEnvironmentFactory
+import de.localchat.network.netty.hold.NettyEnvironmentFactory
 
 fun main() {
     val factory = NettyEnvironmentFactory()

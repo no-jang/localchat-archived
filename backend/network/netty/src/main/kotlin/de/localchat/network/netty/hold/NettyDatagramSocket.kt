@@ -1,7 +1,6 @@
-package de.localchat.network.netty.socket
+package de.localchat.network.netty.hold
 
-import de.localchat.network.netty.environment.NettyEnvironment
-import de.localchat.network.socket.AbstractSocket
+import de.localchat.network.hold.AbstractSocket
 import io.netty5.bootstrap.Bootstrap
 import io.netty5.channel.*
 import io.netty5.channel.socket.DatagramChannel

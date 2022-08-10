@@ -1,4 +1,4 @@
-package de.localchat.network.connection
+package de.localchat.network.hold
 
 interface Connection {
     fun getPort(): Int

@@ -1,10 +1,6 @@
-package de.localchat.network.pool
+package de.localchat.network.hold
 
 import de.localchat.common.lifecycle.AbstractCloseable
-import de.localchat.network.environment.Environment
-import de.localchat.network.socket.ClientSocket
-import de.localchat.network.socket.DatagramSocket
-import de.localchat.network.socket.ServerSocket
 import org.slf4j.Logger
 
 abstract class AbstractSocketPool<E : Environment>(
