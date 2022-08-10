@@ -56,4 +56,8 @@ netty = ["netty-handler", "netty-contrib", "netty-transport-epoll", "netty-trans
 kotest = ["kotest-assertions", "kotest-junit"]
 
 [plugins]
+# Kotlin
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+# Utility
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
