@@ -7,6 +7,7 @@ kotlin = "1.7.20-Beta"
 kotlin-coroutines = "1.6.4"
 
 # Logging
+slf4j = "2.0.0-beta1"
 tinylog = "v3.0-SNAPSHOT"
 
 # Networking
@@ -23,6 +24,7 @@ kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", 
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
 # Logging
+slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 tinylog-api = { module = "com.github.tinylog-org.tinylog:tinylog-api", version.ref = "tinylog" }
 tinylog-api-kotlin = { module = "com.github.tinylog-org.tinylog:tinylog-api-kotlin", version.ref = "tinylog" }
 tinylog-impl = { module = "com.github.tinylog-org.tinylog:tinylog-impl", version.ref = "tinylog" }
@@ -42,8 +44,8 @@ kotest-junit = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotes
 
 [bundles]
 # Logging
-tinylog = ["tinylog-impl"]
-tinylog-api = ["tinylog-api", "tinylog-api-kotlin", "tinylog-slf4j"]
+tinylog = ["tinylog-impl", "tinylog-slf4j"]
+tinylog-api = ["tinylog-api", "tinylog-api-kotlin", "slf4j"]
 
 # Networking
 netty = ["netty-handler", "netty-contrib", "netty-transport-epoll", "netty-transport-kqueue"]

@@ -9,7 +9,7 @@ abstract class AbstractCloseable : Closeable {
 
     override fun onClose(): Flow<Unit> = closeChannel.receiveAsFlow()
 
-    override fun close() {
+    protected fun callOnClose() {
         closeChannel.trySend(Unit)
     }
 }

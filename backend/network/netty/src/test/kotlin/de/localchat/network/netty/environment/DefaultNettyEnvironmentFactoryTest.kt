@@ -13,7 +13,7 @@ class DefaultNettyEnvironmentFactoryTest : FunSpec({
     test("EpollNettyEnvironmentShouldBeUsedIfEpollIsAvailable").config(enabledOrReasonIf = enabledIfLinux) {
         Epoll.isAvailable() shouldBe true
 
-        DefaultNettyEnvironmentFactory()
+        NettyEnvironmentFactory()
             .newEnvironment()
             .shouldBeInstanceOf<EpollNettyEnvironment>()
     }
@@ -21,13 +21,13 @@ class DefaultNettyEnvironmentFactoryTest : FunSpec({
     test("KQueueNettyEnvironmentShouldBeUsedIfKQueueIsAvailable").config(enabledOrReasonIf = enabledIfMacOS) {
         KQueue.isAvailable() shouldBe true
 
-        DefaultNettyEnvironmentFactory()
+        NettyEnvironmentFactory()
             .newEnvironment()
             .shouldBeInstanceOf<KQueue>()
     }
 
     test("NIONettyEnvironmentShouldBeUsedIfEpollAndKQueueIsNotAvailable").config(enabledOrReasonIf = enabledIfWindows) {
-        DefaultNettyEnvironmentFactory()
+        NettyEnvironmentFactory()
             .newEnvironment()
             .shouldBeInstanceOf<NIONettyEnvironment>()
     }
