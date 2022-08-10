@@ -33,12 +33,6 @@ tinylog-slf4j = { module = "com.github.tinylog-org.tinylog:slf4j-tinylog", versi
 
 # Networking
 jmdns = { module = "org.jmdns:jmdns", version.ref = "jmdns" }
-netty-contrib = { module = "io.netty.contrib:netty-codec-extras", version.ref = "netty-contrib" }
-netty-handler = { module = "io.netty:netty5-handler", version.ref = "netty" }
-netty-native-epoll = { module = "io.netty:netty5-transport-native-epoll", version.ref = "netty" }
-netty-native-kqueue = { module = "io.netty:netty5-transport-native-kqueue", version.ref = "netty" }
-netty-transport-epoll = { module = "io.netty:netty5-transport-classes-epoll", version.ref = "netty" }
-netty-transport-kqueue = { module = "io.netty:netty5-transport-classes-kqueue", version.ref = "netty" }
 
 # Testing
 kotest-assertions = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
@@ -48,9 +42,6 @@ kotest-junit = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotes
 # Logging
 tinylog = ["tinylog-impl", "tinylog-slf4j"]
 tinylog-api = ["tinylog-api", "tinylog-api-kotlin", "slf4j"]
-
-# Networking
-netty = ["netty-handler", "netty-contrib", "netty-transport-epoll", "netty-transport-kqueue"]
 
 # Testing
 kotest = ["kotest-assertions", "kotest-junit"]
