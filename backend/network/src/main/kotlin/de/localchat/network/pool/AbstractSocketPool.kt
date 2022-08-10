@@ -19,9 +19,9 @@ abstract class AbstractSocketPool<E : Environment>(
         logger.debug("create socket pool | environment: {}", environment)
     }
 
-    override fun close() {
+    override fun doClose() {
         logger.debug(
-            "close socket pool | clients: {}, servers: {}, datagrams: {}",
+            "Closing socket pool | clients: {}, servers: {}, datagrams: {}",
             clientSockets.size, serverSockets.size, datagramSockets.size
         )
 

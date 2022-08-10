@@ -12,7 +12,7 @@ import io.netty5.channel.socket.ServerSocketChannel
 import io.netty5.channel.socket.SocketChannel
 
 class KQueueNettyEnvironment : NettyEnvironment {
-    override fun getName(): String = "kqueue"
+    override val name: String = "kqueue"
 
     override fun newHandlerFactory(): IoHandlerFactory =
         KQueueHandler.newFactory()

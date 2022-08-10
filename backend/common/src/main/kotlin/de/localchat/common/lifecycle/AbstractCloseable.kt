@@ -7,9 +7,16 @@ import kotlinx.coroutines.flow.receiveAsFlow
 abstract class AbstractCloseable : Closeable {
     private val closeChannel = Channel<Unit>()
 
+    abstract fun doClose()
+
     override fun onClose(): Flow<Unit> = closeChannel.receiveAsFlow()
 
-    protected fun callOnClose() {
+    override fun close() {
+        doClose()
+        fireOnClose()
+    }
+
+    protected fun fireOnClose() {
         closeChannel.trySend(Unit)
     }
 }

@@ -12,7 +12,7 @@ import io.netty5.channel.socket.ServerSocketChannel
 import io.netty5.channel.socket.SocketChannel
 
 class EpollNettyEnvironment : NettyEnvironment {
-    override fun getName(): String = "epoll"
+    override val name: String = "epoll"
 
     override fun newHandlerFactory(): IoHandlerFactory =
         EpollHandler.newFactory()

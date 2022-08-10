@@ -12,7 +12,7 @@ import io.netty5.channel.socket.nio.NioServerSocketChannel
 import io.netty5.channel.socket.nio.NioSocketChannel
 
 class NIONettyEnvironment : NettyEnvironment {
-    override fun getName(): String = "nio"
+    override val name: String = "nio"
 
     override fun newHandlerFactory(): IoHandlerFactory =
         NioHandler.newFactory()

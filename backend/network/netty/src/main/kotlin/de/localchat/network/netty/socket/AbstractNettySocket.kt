@@ -1,3 +1,3 @@
 package de.localchat.network.netty.socket
 
-class NettySocket
+class AbstractNettySocket
