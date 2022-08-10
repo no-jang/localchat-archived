@@ -3,8 +3,8 @@ package de.localchat.network.netty.environment
 import io.netty5.channel.epoll.Epoll
 import io.netty5.channel.kqueue.KQueue
 
-class DefaultNettyEnvironmentFactory : NettyEnvironment.Factory {
-    override fun newEnvironment(): NettyEnvironment {
+object NettyEnvironmentFactory {
+    fun newEnvironment(): NettyEnvironment {
         return if (Epoll.isAvailable()) {
             EpollNettyEnvironment()
         } else if (KQueue.isAvailable()) {
