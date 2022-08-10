@@ -21,6 +21,7 @@ dependencies {
     implementation("io.grpc:grpc-protobuf:1.48.1")
     implementation("io.grpc:grpc-netty:1.48.1")
     implementation("com.google.protobuf:protobuf-kotlin:3.21.4")
+    implementation("org.jmdns:jmdns:3.5.8")
 }
 
 protobuf {
