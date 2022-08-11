@@ -11,7 +11,8 @@ tasks {
         args.addAll(listOf("build"))
 
         val ignoredFiles = listOf(".next", ".turbo", "node_modules")
-        val files = file("apps").listFiles() + file("packages").listFiles()
+        val workspaceDirs = listOf("apps", "config", "packages")
+        val files = workspaceDirs.flatMap { file(it).listFiles().asIterable() }
 
         files
             .filter { file -> file.isDirectory }
