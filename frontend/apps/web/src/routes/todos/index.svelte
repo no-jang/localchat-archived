@@ -1,3 +1,7 @@
+<script context="module">
+	export const prerender = false;
+</script>
+
 <script lang="ts">
 	import {enhance} from '$lib/form';
 	import {scale} from 'svelte/transition';
