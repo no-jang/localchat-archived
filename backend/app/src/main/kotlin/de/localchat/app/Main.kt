@@ -1,13 +1,16 @@
 package de.localchat.app
 
-import java.net.InetAddress
-import javax.jmdns.JmDNS
-import javax.jmdns.ServiceEvent
-import javax.jmdns.ServiceInfo
-import javax.jmdns.ServiceListener
+import GreeterGrpcKt
+import helloRequest
+import io.grpc.ManagedChannelBuilder
+import io.grpc.Server
+import io.grpc.ServerBuilder
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 suspend fun main() {
-    /*    val port = 4568
+    val port = 4568
 
         val server: Server = ServerBuilder
             .forPort(4568)
@@ -34,11 +37,11 @@ suspend fun main() {
             while (true) {
                 delay(5000)
             }
-        }*/
+        }
 
     //server.awaitTermination()
 
-    val jmdns = JmDNS.create(InetAddress.getLocalHost())
+    /*val jmdns = JmDNS.create(InetAddress.getLocalHost())
     val serviceInfo = ServiceInfo.create("_http._tcp.local.", "example", 4589, "path=index.html")
     jmdns.registerService(serviceInfo)
 
@@ -54,5 +57,5 @@ suspend fun main() {
         override fun serviceResolved(event: ServiceEvent) {
             println("Service resolved: ${event.info.inet4Addresses}")
         }
-    })
+    })*/
 }

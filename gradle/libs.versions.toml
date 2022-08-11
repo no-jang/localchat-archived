@@ -12,8 +12,10 @@ tinylog = "v3.0-SNAPSHOT"
 
 # Networking
 jmdns = "3.5.8"
-netty = "5.0.0.Alpha4"
-netty-contrib = "5.0.0.Alpha1"
+grpc = "1.48.1"
+grpc-kotlin = "1.3.0"
+protobuf = "3.21.5"
+protobuf-gradle = "0.8.19"
 
 # Testing
 kotest = "5.4.1"
@@ -33,6 +35,14 @@ tinylog-slf4j = { module = "com.github.tinylog-org.tinylog:slf4j-tinylog", versi
 
 # Networking
 jmdns = { module = "org.jmdns:jmdns", version.ref = "jmdns" }
+grpc = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
+grpc-gen-java = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
+grpc-gen-kotlin = { module = "io.grpc:protoc-gen-grpc-kotlin", version.ref = "grpc-kotlin" }
+grpc-kotlin = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
+grpc-netty = { module = "io.grpc:grpc-netty", version.ref = "grpc" }
+protobuf-compiler = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
+protobuf-gradle = { module = "com.google.protobuf:protobuf-gradle-plugin", version.ref = "protobuf-gradle" }
+protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobuf" }
 
 # Testing
 kotest-assertions = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
@@ -43,12 +53,16 @@ kotest-junit = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotes
 tinylog = ["tinylog-impl", "tinylog-slf4j"]
 tinylog-api = ["tinylog-api", "tinylog-api-kotlin", "slf4j"]
 
+# Networking
+grpc = ["grpc", "grpc-kotlin", "grpc-netty"]
+
 # Testing
 kotest = ["kotest-assertions", "kotest-junit"]
 
 [plugins]
-# Kotlin
+# Compiler
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobuf-gradle" }
 
 # Utility
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
