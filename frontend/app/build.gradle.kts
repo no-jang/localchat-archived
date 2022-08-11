@@ -15,10 +15,10 @@ tasks {
             exclude("**/.turbo/**")
             exclude("**/node_modules/**")
         })
-        outputs.files(fileTree(layout.projectDirectory) {
-            include("**/.next/server/**")
-            include("**/.next/static/**")
-        })
+        inputs.dir("apps")
+        inputs.dir("packages")
+        outputs.dir("apps/docs/.next")
+        outputs.dir("apps/web/.next")
         outputs.cacheIf { true }
     }
 }
