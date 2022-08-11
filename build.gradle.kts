@@ -1,3 +1,5 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 plugins {
     alias(libs.plugins.kotlin) apply false
 
@@ -10,5 +12,11 @@ allprojects {
 
     repositories {
         mavenCentral()
+    }
+}
+
+tasks {
+    create<DependencyUpdatesTask>("dependencyUpdatesNightly") {
+        revision = "integration"
     }
 }
