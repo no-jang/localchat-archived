@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    api(projects.backend.common)
+    api(projects.backend.di)
 
     implementation(libs.jmdns)
 }

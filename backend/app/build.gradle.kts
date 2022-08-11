@@ -10,7 +10,7 @@ application {
 }
 
 dependencies {
-    implementation(projects.backend.common)
+    implementation(projects.backend.discovery)
 
     implementation(libs.jmdns)
 }

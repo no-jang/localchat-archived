@@ -8,7 +8,8 @@ dependencies {
 
     api(libs.koin)
     api(libs.koin.annotations)
+
     implementation(libs.koin.slf4j)
+
     ksp(libs.koin.ksp)
-    implementation(libs.koin.ksp)
 }
