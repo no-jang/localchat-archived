@@ -14,3 +14,5 @@ include("backend:common")
 include("backend:di")
 include("backend:discovery")
 include("backend:network")
+
+include("frontend:app")
