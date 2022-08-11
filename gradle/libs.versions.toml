@@ -1,10 +1,15 @@
 [versions]
+# DI
+koin = "3.2.0"
+koin-ksp = "1.0.1"
+
 # Gradle
 versions = "0.42.0"
 
 # Kotlin
 kotlin = "1.7.20-Beta"
 kotlin-coroutines = "1.6.4"
+kotlin-ksp = "1.7.20-Beta-1.0.6"
 
 # Logging
 slf4j = "2.0.0-beta1"
@@ -22,9 +27,16 @@ kotest = "5.4.2"
 mockk = "1.12.4"
 
 [libraries]
+# DI
+koin = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-ksp" }
+koin-ksp = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-ksp" }
+koin-test = { module = "io.insert-koin:koin-test-junit5", version.ref = "koin" }
+
 # Kotlin
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-ksp-gradle = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "kotlin-ksp" }
 
 # Logging
 slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }

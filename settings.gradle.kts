@@ -11,5 +11,6 @@ enableFeaturePreview(Feature.STABLE_CONFIGURATION_CACHE.toString())
 
 include("backend:app")
 include("backend:common")
+include("backend:di")
 include("backend:discovery")
 include("backend:network")
