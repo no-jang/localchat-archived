@@ -18,7 +18,7 @@ protobuf = "3.21.5"
 protobuf-gradle = "0.8.19"
 
 # Testing
-kotest = "5.4.1"
+kotest = "5.4.2"
 mockk = "1.12.4"
 
 [libraries]
