@@ -15,4 +15,4 @@ include("backend:di")
 include("backend:discovery")
 include("backend:network")
 
-include("frontend:app")
+include("frontend")
