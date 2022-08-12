@@ -1,5 +1,6 @@
 plugins {
     id("build-logic.kotlin")
+    id("build-logic.kotlin-test")
 }
 
 dependencies {
