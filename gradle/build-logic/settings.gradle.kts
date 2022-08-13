@@ -14,4 +14,6 @@ enableFeaturePreview(Feature.TYPESAFE_PROJECT_ACCESSORS.toString())
 enableFeaturePreview(Feature.STABLE_CONFIGURATION_CACHE.toString())
 
 include("kotlin")
+include("plugin")
+include("plugin:processor")
 include("protobuf")

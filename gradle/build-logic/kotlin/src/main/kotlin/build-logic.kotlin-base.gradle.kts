@@ -16,6 +16,6 @@ java {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        freeCompilerArgs = freeCompilerArgs + listOf("-Xuse-k2")
+        //freeCompilerArgs = freeCompilerArgs + listOf("-Xuse-k2")
     }
 }

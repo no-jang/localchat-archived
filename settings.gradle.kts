@@ -16,3 +16,13 @@ include("backend:discovery")
 include("backend:network")
 
 include("frontend")
+
+include("core:app")
+include("core:common")
+include("core:di")
+include("core:plugin")
+include("core:processor")
+
+include("plugins:test")
+
+include("web")
