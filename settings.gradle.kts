@@ -26,3 +26,5 @@ include("core:processor")
 include("plugins:test")
 
 include("web")
+
+include("test")

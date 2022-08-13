@@ -5,16 +5,16 @@
 
 <Header/>
 
-<main>
-	<slot/>
-</main>
+<de.localchat.test.main>
+	<slot />
+</de.localchat.test.main>
 
 <footer>
 	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
 </footer>
 
 <style>
-	main {
+	de.localchat.test.main {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
