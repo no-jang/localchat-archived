@@ -1,9 +1,7 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
-    alias(libs.plugins.kotlin) apply false
-
-    alias(libs.plugins.versions)
+    alias(build.plugins.versions)
 }
 
 allprojects {
@@ -18,5 +16,6 @@ allprojects {
 tasks {
     create<DependencyUpdatesTask>("dependencyUpdatesNightly") {
         revision = "integration"
+        gradleReleaseChannel = "nightly"
     }
 }
