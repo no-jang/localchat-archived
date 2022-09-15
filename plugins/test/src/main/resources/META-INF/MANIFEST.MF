@@ -1,3 +1,0 @@
-Plugin-Class: de.localchat.plugin.test.TestPlugin
-Plugin-Id: test-plugin
-Plugin-Version: 0.1.0

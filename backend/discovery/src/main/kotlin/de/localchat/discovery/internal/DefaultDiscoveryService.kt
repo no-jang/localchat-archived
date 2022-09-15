@@ -1,3 +1,0 @@
-package de.localchat.discovery.internal
-
-class DefaultDiscoveryService
