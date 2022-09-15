@@ -1,6 +1,8 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
+    id("build-logic.kotlin-jvm")
+
     alias(build.plugins.versions)
 }
 

@@ -6,7 +6,7 @@ enableFeaturePreview(Feature.TYPESAFE_PROJECT_ACCESSORS.toString())
 enableFeaturePreview(Feature.STABLE_CONFIGURATION_CACHE.toString())
 
 pluginManagement {
-    //includeBuild("gradle/build-logic")
+    includeBuild("gradle/build-logic")
 }
 
 dependencyResolutionManagement {
