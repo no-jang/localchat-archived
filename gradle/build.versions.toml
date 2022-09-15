@@ -1,0 +1,7 @@
+[versions]
+# Utility
+versions = "0.42.0"
+
+[plugins]
+# Utility
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

@@ -1,0 +1,10 @@
+### Build System ###
+# Cache
+.gradle
+
+# Output
+build
+
+### Integrated Development Environment ###
+# Intellij
+.idea
