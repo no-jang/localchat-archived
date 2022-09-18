@@ -1,3 +1,0 @@
-dependencies {
-    implementation(build.kotlin)
-}
