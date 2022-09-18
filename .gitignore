@@ -8,3 +8,10 @@ build
 ### Integrated Development Environment ###
 # Intellij
 .idea
+
+### LocalChat ###
+# Execution
+run
+
+# Logs
+logs

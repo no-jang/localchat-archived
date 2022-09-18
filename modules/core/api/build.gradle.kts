@@ -10,10 +10,9 @@ kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
-                api(projects.modules.core.api)
-
                 // Logging
-                implementation(libs.tinylog.impl)
+                api(libs.tinylog.api)
+                api(libs.tinylog.slf4j)
             }
         }
     }

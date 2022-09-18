@@ -10,10 +10,10 @@ kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
-                api(projects.modules.core.api)
+                api(projects.modules.web.api)
 
-                // Logging
-                implementation(libs.tinylog.impl)
+                // Web
+                //implementation(libs.ktor.server.netty)
             }
         }
     }

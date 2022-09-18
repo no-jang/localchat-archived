@@ -12,8 +12,8 @@ kotlin {
             dependencies {
                 api(projects.modules.core.api)
 
-                // Logging
-                implementation(libs.tinylog.impl)
+                // Web
+                //api(libs.ktor.server)
             }
         }
     }
