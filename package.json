@@ -17,6 +17,7 @@
     "@commitizen/cz-conventional-changelog": "^1.2.0",
     "commitizen": "^4.2.5",
     "husky": "^8.0.1",
-    "semantic-release": "^19.0.5"
+    "semantic-release": "^19.0.5",
+    "turbo": "^1.4.7"
   }
 }
