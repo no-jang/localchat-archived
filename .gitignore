@@ -5,6 +5,10 @@
 # Output
 build
 
+### Package Manager ###
+# Package Store
+node_modules
+
 ### Integrated Development Environment ###
 # Intellij
 .idea
