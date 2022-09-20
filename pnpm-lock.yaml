@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@commitizen/cz-conventional-changelog': ^1.2.0
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
   '@semantic-release/changelog': ^6.0.1
@@ -12,6 +13,7 @@ specifiers:
   semantic-release: ^19.0.5
 
 devDependencies:
+  '@commitizen/cz-conventional-changelog': 1.2.0
   '@commitlint/cli': 17.1.2
   '@commitlint/config-conventional': 17.1.0
   '@semantic-release/changelog': 6.0.1_semantic-release@19.0.5
@@ -51,6 +53,17 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@commitizen/cz-conventional-changelog/1.2.0:
+    resolution: {integrity: sha512-1K7CpHNui2wFdodxRB/zrfjbNxqlzIB9xR/dKDqJcz6XkdRnDXrqIcKiB0xRS9bU09V4sE/dqLLmc7oFND1UXw==}
+    dependencies:
+      conventional-commit-types: 2.3.0
+      lodash.map: 4.6.0
+      longest: 1.0.1
+      pad-right: 0.2.2
+      right-pad: 1.0.1
+      word-wrap: 1.2.3
+    dev: true
 
   /@commitlint/cli/17.1.2:
     resolution: {integrity: sha512-h/4Hlka3bvCLbnxf0Er2ri5A44VMlbMSkdTRp8Adv2tRiklSTRIoPGs7OEXDv3EoDs2AAzILiPookgM4Gi7LOw==}
@@ -884,6 +897,10 @@ packages:
       semver: 6.3.0
       split: 1.0.1
       through2: 4.0.2
+    dev: true
+
+  /conventional-commit-types/2.3.0:
+    resolution: {integrity: sha512-6iB39PrcGYdz0n3z31kj6/Km6mK9hm9oMRhwcLnKxE7WNoeRKZbTAobliKrbYZ5jqyCvtcVEfjCiaEzhL3AVmQ==}
     dev: true
 
   /conventional-commit-types/3.0.0:
@@ -1763,6 +1780,11 @@ packages:
       is-unicode-supported: 0.1.0
     dev: true
 
+  /longest/1.0.1:
+    resolution: {integrity: sha512-k+yt5n3l48JU4k8ftnKG6V7u32wyH2NfKzeMto9F/QRE0amxy/LayxwlvjjkZEIzqR+19IrtFO8p5kB9QaYUFg==}
+    engines: {node: '>=0.10.0'}
+    dev: true
+
   /longest/2.0.1:
     resolution: {integrity: sha512-Ajzxb8CM6WAnFjgiloPsI3bF+WCxcvhdIG3KNA2KN962+tdBsHcuQ4k4qX/EcS/2CRkcc0iAkR956Nib6aXU/Q==}
     engines: {node: '>=0.10.0'}
@@ -2161,6 +2183,13 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /pad-right/0.2.2:
+    resolution: {integrity: sha512-4cy8M95ioIGolCoMmm2cMntGR1lPLEbOMzOKu8bzjuJP6JpzEMQcDHmh7hHLYGgob+nKe1YHFMaG4V59HQa89g==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      repeat-string: 1.6.1
+    dev: true
+
   /parent-module/1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -2332,6 +2361,11 @@ packages:
       rc: 1.2.8
     dev: true
 
+  /repeat-string/1.6.1:
+    resolution: {integrity: sha512-PV0dzCYDNfRi1jCDbJzpW7jNNDRuCOG/jI5ctQcGKt/clZD+YcPS3yIlWuTJMmESC8aevCFmWJy5wjAFgNqN6w==}
+    engines: {node: '>=0.10'}
+    dev: true
+
   /require-directory/2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -2392,6 +2426,11 @@ packages:
   /reusify/1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
+    dev: true
+
+  /right-pad/1.0.1:
+    resolution: {integrity: sha512-bYBjgxmkvTAfgIYy328fmkwhp39v8lwVgWhhrzxPV3yHtcSqyYKe9/XOhvW48UFjATg3VuJbpsp5822ACNvkmw==}
+    engines: {node: '>= 0.10'}
     dev: true
 
   /rimraf/3.0.2:
