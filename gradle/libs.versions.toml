@@ -9,7 +9,7 @@ tinylog = "2.5.0"
 
 # Testing
 kotest = "5.4.2"
-mockk = "1.12.8"
+mockk = "1.13.1"
 
 # Web
 ktor = "2.1.1"
