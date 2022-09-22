@@ -1,9 +1,10 @@
 [versions]
 # Kotlin
-kotlin = "1.7.20-RC-1.0.6"
+kotlin = "1.7.20-RC"
+ksp = "1.7.20-RC-1.0.6"
 
 [libraries]
 # Kotlin
 kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
-ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "kotlin" }
+ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
