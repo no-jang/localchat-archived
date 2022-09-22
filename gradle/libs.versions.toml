@@ -1,6 +1,7 @@
 [versions]
 # DI
 koin = "3.2.1"
+koin-annotation = "1.0.2"
 
 # Logging
 slf4j = "2.0.0-beta1"
@@ -15,7 +16,9 @@ ktor = "2.1.1"
 
 [libraries]
 # DI
+koin-annotation = { module = "io.insert-koin:koin-annotation", version.ref = "koin-annotation" }
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
+koin-ksp = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin" }
 
 # Logging
 tinylog-api = { module = "org.tinylog:tinylog-api-kotlin", version.ref = "tinylog" }
