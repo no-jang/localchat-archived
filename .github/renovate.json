@@ -1,4 +1,9 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "dependencyDashboard": true,
   "packageRules": [
     {
       "description": "Automatically merge minor and patch-level updates",
