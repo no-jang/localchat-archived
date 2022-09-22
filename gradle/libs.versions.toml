@@ -26,7 +26,7 @@ tinylog-slf4j = { module = "org.tinylog:slf4j-tinylog", version.ref = "tinylog" 
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 kotest-junit = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
-kotest-koin = { module = "io.kotest:kotest-assertions-koin", version.ref = "kotest" }
+kotest-koin = { module = "io.kotest:kotest-extensions-koin", version.ref = "kotest" }
 kotest-ktor = { module = "io.kotest:kotest-assertions-ktor", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 
