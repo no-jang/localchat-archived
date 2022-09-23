@@ -1,3 +1,12 @@
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    group = "de.localchat"
+    version = "0.1.0-SNAPSHOT"
+}
+
 /*
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
