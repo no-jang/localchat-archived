@@ -2,10 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
-}
-
-repositories {
-    mavenCentral()
+    id("build-logic.kotlin-analysis")
 }
 
 java {
