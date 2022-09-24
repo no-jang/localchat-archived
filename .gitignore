@@ -1,3 +1,12 @@
+### Build Tools ###
+## Gradle ##
+# local project-based gradle cache
+.gradle
+
+# module based build dir
+build
+
 ### Developing Environments ###
-### Intellij
+## Intellij ##
+# project based configuration #
 .idea
