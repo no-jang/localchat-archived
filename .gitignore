@@ -10,3 +10,8 @@ build
 ## Intellij ##
 # project based configuration #
 .idea
+
+### Package Managers ###
+## PNPM ##
+# Package Store
+node_modules

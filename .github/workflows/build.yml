@@ -6,6 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -15,21 +17,18 @@ jobs:
           distribution: 'temurin'
           java-version: '18'
 
-      - name: Gradle Build
+      - name: Build
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build --no-daemon --scan
 
-      - name: Extract CI Variables
-        uses: FranzDiebold/github-env-vars-action@v2
-
-      - name: Upload detekt sarif report
+      - name: Upload sarif report
         uses: github/codeql-action/upload-sarif@v2
         if: success() || failure()
         with:
             sarif_file: build/reports/detekt/merge.sarif
 
-      - name: Upload Artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: artifact-${{ env.CI_REF_NAME_SLUG }}-${{ env.CI_SHA_SHORT }}
