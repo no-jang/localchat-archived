@@ -23,7 +23,7 @@ jobs:
           arguments: assemble --scan
 
       - name: Cache build directories
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ./**/build
           key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
@@ -54,7 +54,7 @@ jobs:
           java-version: '18'
 
       - name: Cache build directories
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ./**/build
           key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
@@ -84,7 +84,7 @@ jobs:
           java-version: '18'
 
       - name: Cache build directories
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ./**/build
           key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
