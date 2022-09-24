@@ -36,7 +36,14 @@ if(System.getenv()["CI"] == "true") {
     }
 }
 
-include(":modules:core")
-include(":modules:core:api")
-include(":modules:web")
-include(":modules:web:api")
+includeModule("core", true)
+includeModule("web", true)
+
+fun includeModule(name: String, api: Boolean = false) {
+    include(":modules:$name")
+
+    if(api) {
+        include(":modules:$name:api")
+        project(":modules:$name:api").name = "$name-api"
+    }
+}

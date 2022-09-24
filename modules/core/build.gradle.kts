@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    api(projects.modules.core.api)
+    api(projects.modules.core.coreApi)
 }
