@@ -1,7 +1,5 @@
 import org.gradle.api.internal.FeaturePreviews.Feature
 
-//val ciMode = providers.environmentVariable("CI").map { it.toBoolean() }.get()
-
 // Extract build logic into own include Build
 pluginManagement {
     includeBuild("gradle/build-logic")
