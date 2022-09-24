@@ -2,8 +2,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
+
     id("build-logic.base")
     id("build-logic.kotlin-analysis")
+    id("build-logic.kotlin-docs")
 }
 
 java {
