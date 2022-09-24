@@ -1,0 +1,73 @@
+name: ci
+
+on: [push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install JDK 18
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '18'
+
+      - name: Build
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: assemble --scan
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact-${{ env.CI_REF_NAME_SLUG }}-${{ env.CI_SHA_SHORT }}
+          path: modules/app/build/distributions/*
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install JDK 18
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '18'
+
+      - name: Test
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: test --scan
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install JDK 18
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '18'
+
+      - name: Lint
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: lint --scan
+
+      - name: Upload report
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: build/reports/detekt/merge.sarif
