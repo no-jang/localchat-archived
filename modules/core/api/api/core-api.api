@@ -1,0 +1,4 @@
+public abstract interface class de/localchat/core/api/Core {
+	public abstract fun print ()V
+}
+
