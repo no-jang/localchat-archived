@@ -5,6 +5,6 @@ allprojects {
 
 // Accept terms of service for publishing a gradle build scan
 extensions.findByName("gradleEnterprise")?.let {
-    setProperty("termsOfServiceUrl", "https://gradle.com/terms-of-service")
-    setProperty("termsOfServiceAgree", "yes")
+    setProperty("buildScan.termsOfServiceUrl", "https://gradle.com/terms-of-service")
+    setProperty("buildScan.termsOfServiceAgree", "yes")
 }
