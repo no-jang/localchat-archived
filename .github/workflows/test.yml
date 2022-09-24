@@ -1,4 +1,4 @@
-name: build
+name: test
 
 on: [ push, pull_request ]
 
@@ -17,13 +17,7 @@ jobs:
           distribution: 'temurin'
           java-version: '18'
 
-      - name: Build
+      - name: Test
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: assembleDist --scan
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifact-${{ env.CI_REF_NAME_SLUG }}-${{ env.CI_SHA_SHORT }}
-          path: modules/app/build/distributions/*
+          arguments: test --scan

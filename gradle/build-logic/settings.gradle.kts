@@ -18,4 +18,5 @@ dependencyResolutionManagement {
     }
 }
 
+include("base")
 include("kotlin")

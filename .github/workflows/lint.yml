@@ -1,4 +1,4 @@
-name: build
+name: test
 
 on: [ push, pull_request ]
 
@@ -17,13 +17,13 @@ jobs:
           distribution: 'temurin'
           java-version: '18'
 
-      - name: Build
+      - name: Lint
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: assembleDist --scan
+          arguments: lint --scan
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload report
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
         with:
-          name: artifact-${{ env.CI_REF_NAME_SLUG }}-${{ env.CI_SHA_SHORT }}
-          path: modules/app/build/distributions/*
+         sarif_file: build/reports/detekt/merge.sarif

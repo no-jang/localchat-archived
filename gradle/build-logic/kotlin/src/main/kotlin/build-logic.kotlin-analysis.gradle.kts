@@ -18,10 +18,14 @@ detekt {
 }
 
 tasks {
-    withType<Detekt> {
+    val detekt = withType<Detekt> {
         reports {
             xml.required.set(true)
             sarif.required.set(true)
         }
+    }
+
+    named("lint") {
+        dependsOn(detekt)
     }
 }

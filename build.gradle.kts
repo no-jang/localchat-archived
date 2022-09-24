@@ -3,6 +3,7 @@ import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.report.ReportMergeTask
 
 plugins {
+    id("build-logic.base")
     id("build-logic.kotlin-analysis")
 }
 
