@@ -36,6 +36,7 @@ if(System.getenv()["CI"] == "true") {
     }
 }
 
+includeModule("app")
 includeModule("core", true)
 includeModule("web", true)
 
