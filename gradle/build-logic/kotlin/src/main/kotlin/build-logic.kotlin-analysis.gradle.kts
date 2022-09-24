@@ -4,8 +4,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-// TODO Wait for usage of dependency cataloges in precompiled script plugins
-val build = extensions
+// TODO Wait for usage of dependency catalogues in precompiled script plugins
+val build: VersionCatalog = extensions
     .getByType<VersionCatalogsExtension>()
     .named("build")
 
@@ -21,7 +21,7 @@ tasks {
     withType<Detekt> {
         reports {
             xml.required.set(true)
-            html.required.set(true)
+            sarif.required.set(true)
         }
     }
 }
