@@ -16,6 +16,15 @@ rootProject.name = "localchat"
 enableFeaturePreview(Feature.TYPESAFE_PROJECT_ACCESSORS.toString())
 enableFeaturePreview(Feature.STABLE_CONFIGURATION_CACHE.toString())
 
+// Add dependency catalog for dependencies used for the build process
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("build") {
+            from(files("gradle/build.versions.toml"))
+        }
+    }
+}
+
 // Automatically accept build scan terms of service only if in CI
 if(System.getenv()["CI"] == "true") {
     gradleEnterprise {
@@ -29,3 +38,5 @@ if(System.getenv()["CI"] == "true") {
 
 include(":modules:core")
 include(":modules:core:api")
+include(":modules:web")
+include(":modules:web:api")
