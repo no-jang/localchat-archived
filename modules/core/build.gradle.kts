@@ -1,9 +1,7 @@
 plugins {
-    id("build-logic.kotlin-api")
-    id("build-logic.kotlin-ksp")
+    id("build-logic.kotlin")
 }
 
 dependencies {
-    apiApi(libs.hooks)
-    ksp(libs.hooks.processor)
+    api(projects.modules.core.api)
 }

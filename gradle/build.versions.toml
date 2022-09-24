@@ -1,10 +1,12 @@
 [versions]
 # Kotlin
 kotlin = "1.7.20-RC"
-ksp = "1.7.20-RC-1.0.6"
+kotlin-ksp = "1.7.20-RC-1.0.6"
+kotlin-validator = "0.11.1"
 
 [libraries]
 # Kotlin
 kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+kotlin-ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "kotlin-ksp" }
 kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+kotlin-validator = { module = "org.jetbrains.kotlinx.binary-compatibility-validator:org.jetbrains.kotlinx.binary-compatibility-validator.gradle.plugin", version.ref = "kotlin-validator" }

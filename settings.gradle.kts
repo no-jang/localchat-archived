@@ -19,4 +19,6 @@ dependencyResolutionManagement {
 
 include(":modules:app")
 include(":modules:core")
+include(":modules:core:api")
 include(":modules:web")
+include(":modules:web:api")
