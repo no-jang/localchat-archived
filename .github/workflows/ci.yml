@@ -22,11 +22,20 @@ jobs:
         with:
           arguments: assemble --scan
 
+      - name: Cache build directories
+        uses: actions/cache@v2
+        with:
+          path: ./**/build
+          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: artifact-${{ env.CI_REF_NAME_SLUG }}-${{ env.CI_SHA_SHORT }}
-          path: ./**/build
+          path: modules/app/build/distributions/*
 
   test:
     runs-on: ubuntu-latest
@@ -43,6 +52,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '18'
+
+      - name: Cache build directories
+        uses: actions/cache@v2
+        with:
+          path: ./**/build
+          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Test
         uses: gradle/gradle-build-action@v2
@@ -64,6 +82,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '18'
+
+      - name: Cache build directories
+        uses: actions/cache@v2
+        with:
+          path: ./**/build
+          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Lint
         uses: gradle/gradle-build-action@v2
