@@ -1,6 +1,8 @@
 name: ci
 
-on: [push, pull_request ]
+on:
+  - pull_request
+  - push
 
 jobs:
   build:
@@ -17,19 +19,15 @@ jobs:
           distribution: 'temurin'
           java-version: '18'
 
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'current'
+
       - name: Build
         uses: gradle/gradle-build-action@v2
         with:
           arguments: assemble --scan
-
-      - name: Cache build directories
-        uses: actions/cache@v2
-        with:
-          path: ./**/build
-          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -39,8 +37,6 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs:
-      - build
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
 
@@ -53,14 +49,10 @@ jobs:
           distribution: 'temurin'
           java-version: '18'
 
-      - name: Cache build directories
-        uses: actions/cache@v2
+      - name: Install Node
+        uses: actions/setup-node@v3
         with:
-          path: ./**/build
-          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          node-version: 'current'
 
       - name: Test
         uses: gradle/gradle-build-action@v2
@@ -69,8 +61,6 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    needs:
-      - build
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
 
@@ -83,14 +73,10 @@ jobs:
           distribution: 'temurin'
           java-version: '18'
 
-      - name: Cache build directories
-        uses: actions/cache@v2
+      - name: Install Node
+        uses: actions/setup-node@v3
         with:
-          path: ./**/build
-          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle.kts') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          node-version: 'current'
 
       - name: Lint
         uses: gradle/gradle-build-action@v2
