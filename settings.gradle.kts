@@ -19,3 +19,6 @@ dependencyResolutionManagement {
         }
     }
 }
+
+include(":modules:core")
+include(":modules:core:api")
