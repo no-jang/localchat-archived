@@ -36,17 +36,20 @@ if(System.getenv()["CI"] == "true") {
     }
 }
 
-include("docs")
+includeProject("app")
+includeProject("core", listOf("api"))
+includeProject("docs")
 
-includeModule("app")
-includeModule("core", true)
-includeModule("web", true)
+includeModule("web")
 
-fun includeModule(name: String, api: Boolean = false) {
-    include(":modules:$name")
+fun includeModule(name: String, projects: List<String> = emptyList())
+    = includeProject(name,listOf("api") + projects, "modules")
 
-    if(api) {
-        include(":modules:$name:api")
-        project(":modules:$name:api").name = "$name-api"
+fun includeProject(name: String, projects: List<String> = emptyList(), path: String = "projects",) {
+    include(":$path:$name")
+
+    for(project in projects) {
+        include(":$path:$name:$project")
+        project(":$path:$name:$project").name = "$name-$project"
     }
 }

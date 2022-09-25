@@ -8,7 +8,7 @@ application {
 }
 
 dependencies {
-    implementation(projects.modules.core)
+    implementation(projects.projects.core)
 
     implementation(projects.modules.web)
 }
