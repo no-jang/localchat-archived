@@ -10,6 +10,7 @@
     "@commitlint/cz-commitlint": "17.1.2",
     "commitizen": "4.2.5",
     "husky": "8.0.1",
-    "inquirer": "8.2.4"
+    "inquirer": "8.2.4",
+    "turbo": "1.5.3"
   }
 }
