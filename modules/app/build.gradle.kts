@@ -1,12 +1,14 @@
 plugins {
-  id("build-logic.kotlin")
-  application
+    id("build-logic.kotlin")
+    application
 }
 
 application {
-  mainClass.set("de.localchat.MainKt")
+    mainClass.set("de.localchat.MainKt")
 }
 
 dependencies {
-  implementation(projects.modules.core)
+    implementation(projects.modules.core)
+
+    implementation(projects.modules.web)
 }

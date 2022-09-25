@@ -14,9 +14,15 @@
 
 package de.localchat
 
+import de.localchat.core.api.module.Module
+import java.util.ServiceLoader
+
 /**
  * Main application entry point.
  */
 fun main() {
-    // TODO
+    val serviceLoader = ServiceLoader.load(Module::class.java)
+    val modules = serviceLoader.toList()
+
+    println(modules.map { it::class.qualifiedName })
 }
