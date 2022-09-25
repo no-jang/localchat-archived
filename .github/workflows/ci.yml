@@ -20,7 +20,7 @@ jobs:
           java-version: '18'
 
       - name: Setup NodeJs
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 'current'
 
@@ -53,7 +53,7 @@ jobs:
           java-version: '18'
 
       - name: Setup NodeJs
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 'current'
 
@@ -80,7 +80,7 @@ jobs:
           java-version: '18'
 
       - name: Setup NodeJs
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 'current'
 
