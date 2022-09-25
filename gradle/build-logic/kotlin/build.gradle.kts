@@ -5,5 +5,6 @@ dependencies {
 
     implementation(build.kotlin)
     implementation(build.kotlin.dokka)
+    implementation(build.kotlin.ksp)
     implementation(build.kotlin.validator)
 }
