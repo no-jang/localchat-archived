@@ -3,6 +3,8 @@ plugins {
     application
 }
 
+val modules by configurations.creating
+
 application {
     mainClass.set("de.localchat.MainKt")
 }
@@ -10,5 +12,15 @@ application {
 dependencies {
     implementation(projects.projects.core)
 
-    implementation(projects.modules.web)
+    modules(projects.modules.web)
+}
+
+distributions {
+    main {
+        contents {
+            from((modules - configurations.runtimeClasspath)) {
+                into("modules")
+            }
+        }
+    }
 }

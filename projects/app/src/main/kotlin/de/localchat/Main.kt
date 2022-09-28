@@ -15,14 +15,25 @@
 package de.localchat
 
 import de.localchat.core.api.module.Module
+import java.net.URLClassLoader
 import java.util.ServiceLoader
 
 /**
  * Main application entry point.
  */
 fun main() {
-    val serviceLoader = ServiceLoader.load(Module::class.java)
-    val modules = serviceLoader.toList()
+    //val serviceLoader = ServiceLoader.load(Module::class.java)
+    //val modules = serviceLoader.toList()
 
-    println(modules.map { it::class.qualifiedName })
+    //println(modules.map { it::class.qualifiedName })
+
+    val main = Main()
+    main.test()
+}
+
+class Main {
+    fun test() {
+        val classLoader = this::class.java.classLoader as URLClassLoader
+        classLoader.urLs.forEach { println(it) }
+    }
 }

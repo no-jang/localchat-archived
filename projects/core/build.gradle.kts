@@ -4,4 +4,6 @@ plugins {
 
 dependencies {
     api(projects.projects.core.coreApi)
+
+    implementation(libs.tinylog.impl)
 }
