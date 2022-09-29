@@ -19,4 +19,4 @@ jobs:
         run: npm install -g pnpm
 
       - name: Build
-        run: pnpm exec commitlint --config config/commitlint/commitlint.config.js --from HEAD~${{ github.event.pull_request.commits }} --to HEAD
+        run: pnpm dlx commitlint --config config/commitlint/commitlint.config.js --from HEAD~${{ github.event.pull_request.commits }} --to HEAD
