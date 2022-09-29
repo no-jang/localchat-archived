@@ -97,3 +97,22 @@ jobs:
         if: success() || failure()
         with:
           sarif_file: build/reports/detekt/merge.sarif
+
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'current'
+
+      - name: Install PNPM
+        run: npm install -g pnpm
+
+      - name: Lint Commit
+        run: pnpm dlx commitlint --from HEAD~${{

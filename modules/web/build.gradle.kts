@@ -1,7 +1,3 @@
 plugins {
-    id("build-logic.kotlin")
-}
-
-dependencies {
-    api(projects.modules.web.webApi)
+    id("build-logic.kotlin-api")
 }

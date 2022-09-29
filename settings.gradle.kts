@@ -37,15 +37,15 @@ if(System.getenv()["CI"] == "true") {
 }
 
 includeProject("app")
-includeProject("core", listOf("api"))
+includeProject("core")
 includeProject("docs")
 
 includeModule("web")
 
 fun includeModule(name: String, projects: List<String> = emptyList())
-    = includeProject(name,listOf("api") + projects, "modules")
+    = includeProject(name,projects, "modules")
 
-fun includeProject(name: String, projects: List<String> = emptyList(), path: String = "projects",) {
+fun includeProject(name: String, projects: List<String> = emptyList(), path: String = "projects") {
     include(":$path:$name")
 
     for(project in projects) {

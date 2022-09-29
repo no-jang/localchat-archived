@@ -1,7 +1,12 @@
 package de.localchat.web
 
-import de.localchat.core.api.module.Module
+import de.localchat.web.api.WebModuleApi
 
-class WebModule : Module {
-    override val name: String = "web"
+//import de.localchat.core.api.module.Module
+
+class WebModule : WebModuleApi {
+    override fun request(url: String): String {
+        TODO("Not yet implemented")
+    }
+
 }

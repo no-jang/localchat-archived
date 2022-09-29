@@ -1,9 +1,11 @@
 plugins {
+    id("build-logic.kotlin-api")
     id("build-logic.kotlin-ksp")
 }
 
 dependencies {
-    api(projects.projects.core.coreApi)
+    apiApi(libs.tinylog.api)
+    apiApi(libs.tinylog.slf4j)
 
     implementation(libs.tinylog.impl)
 }
