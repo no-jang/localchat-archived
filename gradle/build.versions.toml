@@ -2,7 +2,7 @@
 # Kotlin
 detekt = "1.22.0-RC1"
 
-kotlin = "1.7.20-RC"
+kotlin = "1.7.20"
 kotlin-dokka = "1.7.10"
 kotlin-ksp = "1.7.20-RC-1.0.6"
 kotlin-validator = "0.11.1"
