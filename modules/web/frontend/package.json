@@ -1,0 +1,6 @@
+{
+  "name": "localchat-web",
+  "devDependencies": {
+    "@sveltejs/kit": "^1.0.0-next.505"
+  }
+}
