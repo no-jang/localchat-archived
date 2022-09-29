@@ -12,7 +12,7 @@ hooks = "0.13.1"
 
 # Testing
 kotest = "5.4.2"
-mockk = "1.13.1"
+mockk = "1.13.2"
 
 # Web
 ktor = "2.1.1"
