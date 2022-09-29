@@ -1,4 +1,0 @@
-public abstract interface class de/localchat/web/api/WebModuleApi {
-	public abstract fun request (Ljava/lang/String;)Ljava/lang/String;
-}
-
