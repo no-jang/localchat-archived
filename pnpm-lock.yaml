@@ -14,7 +14,7 @@ importers:
 
   frontend:
     specifiers:
-      '@fontsource/fira-mono': 4.5.0
+      '@fontsource/fira-mono': 4.5.10
       '@neoconfetti/svelte': 1.0.0
       '@sveltejs/adapter-static': 1.0.0-next.43
       '@sveltejs/kit': 1.0.0-next.505
@@ -33,7 +33,7 @@ importers:
       typescript: 4.7.4
       vite: 3.1.0
     devDependencies:
-      '@fontsource/fira-mono': 4.5.0
+      '@fontsource/fira-mono': 4.5.10
       '@neoconfetti/svelte': 1.0.0
       '@sveltejs/adapter-static': 1.0.0-next.43
       '@sveltejs/kit': 1.0.0-next.505_svelte@3.46.0+vite@3.1.0
@@ -279,8 +279,8 @@ packages:
       - supports-color
     dev: true
 
-  /@fontsource/fira-mono/4.5.0:
-    resolution: {integrity: sha512-KE+d3wmgq/YKM0BqgUF7p2yeBNi805Nfof1lC1wJ7E9i2EWoC363sGdKG+MQBVm+ei3GYZu+Bo8Xha1w1pkB7g==}
+  /@fontsource/fira-mono/4.5.10:
+    resolution: {integrity: sha512-bxUnRP8xptGRo8YXeY073DSpfK74XpSb0ZyRNpHV9WvLnJ7TwPOjZll8hTMin7zLC6iOp59pDZ8EQDj1gzgAQQ==}
     dev: true
 
   /@humanwhocodes/config-array/0.9.5:
