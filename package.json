@@ -1,6 +1,6 @@
 {
   "name": "localchat",
   "devDependencies": {
-    "turbo": "^1.6.1"
+    "turbo": "1.6.1"
   }
 }
