@@ -6,3 +6,7 @@ build
 ## Integrated Development Environments ##
 # IntelliJ IDEA
 .idea
+
+## Package Manager ##
+# NPM
+node_modules

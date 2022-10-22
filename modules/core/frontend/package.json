@@ -1,0 +1,6 @@
+{
+  "name": "core",
+  "devDependencies": {
+    "svelte": "^3.52.0"
+  }
+}
