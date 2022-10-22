@@ -1,0 +1,8 @@
+## Build System ##
+# Gradle
+.gradle
+build
+
+## Integrated Development Environments ##
+# IntelliJ IDEA
+.idea
