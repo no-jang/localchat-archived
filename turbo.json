@@ -6,7 +6,8 @@
         "^build"
       ],
       "outputs": [
-        "dist/**"
+        ".svelte-kit/**",
+        "out/**"
       ]
     },
     "lint": {
