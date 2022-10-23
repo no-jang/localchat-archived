@@ -3,8 +3,7 @@ module.exports = {
     extends: [
         "plugin:@typescript-eslint/recommended",
         "eslint:recommended",
-        "prettier",
-        "turbo"
+        "prettier"
     ],
     plugins: ["@typescript-eslint", "prettier", "svelte3"],
     overrides: [{ files: ["*.svelte"], processor: "svelte3/svelte3" }],
