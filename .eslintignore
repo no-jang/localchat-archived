@@ -19,3 +19,4 @@ dist
 ## Package Manager ##
 # PNPM
 node_modules
+pnpm-lock.yaml

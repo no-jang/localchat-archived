@@ -1,2 +1,3 @@
 packages:
+  - common/frontend/**
   - modules/**/frontend

@@ -1,9 +1,11 @@
 {
   "name": "localchat",
   "scripts": {
-    "build": "turbo build"
+    "build": "turbo build",
+    "lint": "eslint ."
   },
   "devDependencies": {
+    "common-eslint": "workspace:*",
     "turbo": "1.6.1"
   }
 }
