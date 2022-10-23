@@ -1,0 +1,8 @@
+{
+  "name": "@common/typescript",
+  "type": "module",
+  "devDependencies": {
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4"
+  }
+}
