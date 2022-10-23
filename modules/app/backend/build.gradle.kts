@@ -1,11 +1,11 @@
 plugins {
-    kotlin("jvm") version "1.7.20"
+  kotlin("jvm") version "1.7.20"
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    implementation(projects.modules.core.backend)
+  implementation(projects.modules.core.backend)
 }

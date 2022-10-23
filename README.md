@@ -14,6 +14,7 @@ encrypted connection (TLS). In practice this should not be a problem since the w
 localhost.
 
 In order to circumvent this you will have to allow "mixed content" in your browser, instructions to do this can be
-found [here](https://experienceleague.adobe.com/docs/target/using/experiences/vec/troubleshoot-composer/mixed-content.html?lang=en).
+found [here](https://experienceleague.adobe.com/docs/target/using/experiences/vec/troubleshoot-composer/mixed-content.html?lang=en)
+.
 
 ### DO NOT SEND ANY PERSONAL INFORMATION IN THE CHAT, IT IS VISIBLE TO ANYONE ON THE WEB!
