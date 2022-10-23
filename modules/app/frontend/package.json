@@ -12,18 +12,18 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
-    "@fontsource/fira-mono": "^4.5.0",
-    "@neoconfetti/svelte": "^1.0.0",
-    "@playwright/test": "^1.25.0",
+    "@fontsource/fira-mono": "4.5.10",
+    "@neoconfetti/svelte": "1.0.0",
+    "@playwright/test": "1.27.1",
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
-    "@types/cookie": "^0.5.1",
-    "svelte": "^3.46.0",
-    "svelte-check": "^2.7.1",
-    "svelte-preprocess": "^4.10.6",
-    "tslib": "^2.3.1",
-    "typescript": "^4.7.4",
-    "vite": "^3.1.0"
+    "@types/cookie": "0.5.1",
+    "svelte": "3.52.0",
+    "svelte-check": "2.9.2",
+    "svelte-preprocess": "4.10.7",
+    "tslib": "2.4.0",
+    "typescript": "4.8.4",
+    "vite": "3.1.8"
   },
   "type": "module"
 }
