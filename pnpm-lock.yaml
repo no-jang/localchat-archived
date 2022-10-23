@@ -30,35 +30,8 @@ importers:
       turbo: 1.6.1
       typescript: 4.8.4
 
-  common/frontend/svelte:
-    specifiers:
-      '@common/typescript': workspace:*
-      '@sveltejs/adapter-static': 1.0.0-next.46
-      '@sveltejs/kit': 1.0.0-next.522
-      svelte: 3.52.0
-      svelte-check: 2.9.2
-      svelte-preprocess: 4.10.7
-      vite: 3.1.8
-    devDependencies:
-      '@common/typescript': link:../typescript
-      '@sveltejs/adapter-static': 1.0.0-next.46
-      '@sveltejs/kit': 1.0.0-next.522_svelte@3.52.0+vite@3.1.8
-      svelte: 3.52.0
-      svelte-check: 2.9.2_svelte@3.52.0
-      svelte-preprocess: 4.10.7_svelte@3.52.0
-      vite: 3.1.8
-
-  common/frontend/typescript:
-    specifiers:
-      tslib: ^2.4.0
-      typescript: ^4.8.4
-    devDependencies:
-      tslib: 2.4.0
-      typescript: 4.8.4
-
   modules/app/frontend:
     specifiers:
-      '@common/svelte': workspace:*
       '@fontsource/fira-mono': 4.5.0
       '@neoconfetti/svelte': 1.0.0
       '@playwright/test': 1.25.0
@@ -69,10 +42,9 @@ importers:
       svelte-check: 2.9.2
       svelte-preprocess: 4.10.7
       tslib: 2.4.0
-      typescript: ^4.8.4
+      typescript: 4.8.4
       vite: 3.1.8
     devDependencies:
-      '@common/svelte': link:../../../common/frontend/svelte
       '@fontsource/fira-mono': 4.5.0
       '@neoconfetti/svelte': 1.0.0
       '@playwright/test': 1.25.0
@@ -1743,56 +1715,6 @@ packages:
       strip-indent: 3.0.0
       svelte: 3.52.0
       typescript: 4.8.4
-    dev: true
-
-  /svelte-preprocess/4.10.7_svelte@3.52.0:
-    resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
-    engines: {node: '>= 9.11.2'}
-    requiresBuild: true
-    peerDependencies:
-      '@babel/core': ^7.10.2
-      coffeescript: ^2.5.1
-      less: ^3.11.3 || ^4.0.0
-      node-sass: '*'
-      postcss: ^7 || ^8
-      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
-      pug: ^3.0.0
-      sass: ^1.26.8
-      stylus: ^0.55.0
-      sugarss: ^2.0.0
-      svelte: ^3.23.0
-      typescript: ^3.9.5 || ^4.0.0
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      coffeescript:
-        optional: true
-      less:
-        optional: true
-      node-sass:
-        optional: true
-      postcss:
-        optional: true
-      postcss-load-config:
-        optional: true
-      pug:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@types/pug': 2.0.6
-      '@types/sass': 1.43.1
-      detect-indent: 6.1.0
-      magic-string: 0.25.9
-      sorcery: 0.10.0
-      strip-indent: 3.0.0
-      svelte: 3.52.0
     dev: true
 
   /svelte/3.52.0:
