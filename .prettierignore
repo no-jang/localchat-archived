@@ -1,0 +1,22 @@
+## Build System ##
+# General
+build
+dist
+
+# Gradle
+.gradle
+
+# Svelte Kit
+.svelte-kit
+
+# Turborepo
+.turbo
+
+## Integrated Development Environments ##
+# IntelliJ IDEA
+.idea
+
+## Package Manager ##
+# PNPM
+node_modules
+pnpm-lock.yaml

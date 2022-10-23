@@ -1,7 +1,7 @@
 module.exports = {
 	parser: '@typescript-eslint/parser',
-	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'turbo'],
-	plugins: ['svelte3', '@typescript-eslint'],
+	extends: ['plugin:@typescript-eslint/recommended', 'eslint:recommended', 'prettier', 'turbo'],
+	plugins: ['@typescript-eslint', 'prettier', 'svelte3'],
 	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
 	settings: {
 		'svelte3/typescript': () => require('typescript')
