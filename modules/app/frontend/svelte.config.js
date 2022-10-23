@@ -1,4 +1,4 @@
-import common from "@common/svelte"
+import common from "@common/svelte/svelte.config.js"
 
 export default {
     ...common

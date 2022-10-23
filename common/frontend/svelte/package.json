@@ -4,12 +4,15 @@
   "devDependencies": {
     "@common/typescript": "workspace:*",
     "@sveltejs/adapter-static": "1.0.0-next.46",
+    "@sveltejs/kit": "1.0.0-next.522",
     "svelte": "3.52.0",
     "svelte-check": "2.9.2",
-    "svelte-preprocess": "4.10.7"
+    "svelte-preprocess": "4.10.7",
+    "vite": "3.1.8"
   },
   "peerDependencies": {
     "@sveltejs/kit": "1.0.0-next.522",
+    "svelte": "1.0.0-next.522",
     "vite": "3.1.8"
   }
 }
