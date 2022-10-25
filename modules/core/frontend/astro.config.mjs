@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
-import svelte from '@astrojs/svelte';
 
-// https://astro.build/config
+import svelte from '@astrojs/svelte';
+import tailwind from "@astrojs/tailwind";
+
 export default defineConfig({
-	// Enable Svelte to support Svelte components.
-	integrations: [svelte()],
+  integrations: [svelte(), tailwind()]
 });
