@@ -17,11 +17,6 @@ jobs:
                     distribution: 'temurin'
                     java-version: '18'
 
-            -   name: Setup NodeJS
-                uses: actions/setup-node@v3
-                with:
-                    node-version: 'current'
-
             -   name: Build
                 uses: gradle/gradle-build-action@v2
                 with:

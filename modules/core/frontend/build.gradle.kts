@@ -5,8 +5,10 @@ plugins {
     id("com.github.node-gradle.node") version "3.5.0"
 }
 
+val isCI = providers.environmentVariable("CI").map { it.toBoolean() }
+
 node {
-    download.set(false)
+    download.set(isCI)
 }
 
 tasks {
