@@ -5,7 +5,7 @@ plugins {
     id("com.github.node-gradle.node") version "3.5.0"
 }
 
-val isCI = providers.environmentVariable("CI").map { it.toBoolean() }
+val isCI = providers.environmentVariable("CI").map { it.toBoolean() }.orElse(false)
 
 node {
     download.set(isCI)

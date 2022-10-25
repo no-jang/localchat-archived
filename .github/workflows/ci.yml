@@ -20,4 +20,4 @@ jobs:
             -   name: Build
                 uses: gradle/gradle-build-action@v2
                 with:
-                    arguments: assemble
+                    arguments: assemble --debug --scan
