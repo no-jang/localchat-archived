@@ -1,5 +1,10 @@
 {
   "name": "localchat",
+  "engines": {
+    "node": ">=19.0.0",
+    "pnpm": ">=7.14.0"
+  },
+  "packageManager": "pnpm@7.14.0",
   "scripts": {
     "preinstall": "pnpm dlx only-allow pnpm",
     "lint": "eslint .",
