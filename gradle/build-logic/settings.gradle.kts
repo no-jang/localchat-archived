@@ -17,4 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
+include("message")
 include("node")
