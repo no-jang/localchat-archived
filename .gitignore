@@ -9,6 +9,9 @@ dist
 # Svelte Kit
 .svelte-kit
 
+# Turborepo
+.turbo
+
 ## Integrated Development Environments ##
 # IntelliJ IDEA
 .idea

@@ -1,5 +1,9 @@
 import org.gradle.api.internal.FeaturePreviews.Feature
 
+pluginManagement {
+    includeBuild("gradle/build-logic")
+}
+
 plugins {
     id("com.gradle.enterprise") version "3.11.1"
 }
