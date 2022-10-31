@@ -1,6 +1,6 @@
 plugins {
     base
 
-    id("build-logic.message")
+    id("build-logic.module-root")
     id("build-logic.node-root")
 }

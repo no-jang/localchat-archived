@@ -1,4 +1,17 @@
 dependencies {
-    implementation(projects.common)
-    implementation(projects.message)
+    implementation(projects.core)
+}
+
+gradlePlugin {
+    plugins {
+        create("build-logic.node-root") {
+            id = "build-logic.node-root"
+            implementationClass = "de.localchat.gradle.node.plugins.NodeRootPlugin"
+        }
+
+        create("build-logic.node") {
+            id = "build-logic.node"
+            implementationClass = "de.localchat.gradle.node.plugins.NodePlugin"
+        }
+    }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@example/framework-svelte",
+  "name": "core",
   "type": "module",
   "scripts": {
     "dev": "astro dev",

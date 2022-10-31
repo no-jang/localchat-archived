@@ -17,6 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
-include("common")
-include("message")
+include("core")
 include("node")
