@@ -12,7 +12,7 @@ importers:
       eslint-config-prettier: 8.5.0
       eslint-plugin-prettier: 4.2.1
       eslint-plugin-svelte3: 4.0.0
-      husky: 8.0.1
+      husky: 8.0.2
       prettier: 2.7.1
       prettier-plugin-svelte: 2.8.0
       svelte: 3.52.0
@@ -27,7 +27,7 @@ importers:
       eslint-config-prettier: 8.5.0_eslint@8.27.0
       eslint-plugin-prettier: 4.2.1_v7o5sx5x3wbs57ifz6wc4f76we
       eslint-plugin-svelte3: 4.0.0_3mj2dxwqqdwhca3fosrxvrsvse
-      husky: 8.0.1
+      husky: 8.0.2
       prettier: 2.7.1
       prettier-plugin-svelte: 2.8.0_lrllcp5xtrkmmdzifit4hd52ze
       svelte: 3.52.0
@@ -3000,8 +3000,8 @@ packages:
     engines: {node: '>=12.20.0'}
     dev: false
 
-  /husky/8.0.1:
-    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+  /husky/8.0.2:
+    resolution: {integrity: sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
