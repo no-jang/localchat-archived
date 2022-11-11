@@ -1,6 +1,9 @@
 plugins {
     base
 
-    id("build-logic.module-root")
     id("build-logic.node-root")
+}
+
+node {
+    tasks.set(listOf("build", "lint", "dev"))
 }

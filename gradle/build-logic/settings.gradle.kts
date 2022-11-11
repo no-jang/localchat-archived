@@ -17,5 +17,4 @@ dependencyResolutionManagement {
     }
 }
 
-include("coreold")
-include("nodeold")
+include("node")

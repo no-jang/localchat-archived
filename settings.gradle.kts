@@ -22,7 +22,7 @@ include("modules:core")
 include("modules:core:backend")
 include("modules:core:frontend")
 
-if(isCI.isPresent) {
+if (isCI.get()) {
     gradleEnterprise {
         buildScan {
             termsOfServiceUrl = "https://gradle.com/terms-of-service"
