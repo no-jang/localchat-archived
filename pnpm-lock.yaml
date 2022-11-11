@@ -40,7 +40,7 @@ importers:
       '@neoconfetti/svelte': 1.0.0
       '@playwright/test': 1.27.1
       '@sveltejs/adapter-static': 1.0.0-next.48
-      '@sveltejs/kit': 1.0.0-next.542
+      '@sveltejs/kit': 1.0.0-next.543
       '@types/cookie': 0.5.1
       svelte: 3.53.1
       svelte-check: 2.9.2
@@ -53,7 +53,7 @@ importers:
       '@neoconfetti/svelte': 1.0.0
       '@playwright/test': 1.27.1
       '@sveltejs/adapter-static': 1.0.0-next.48
-      '@sveltejs/kit': 1.0.0-next.542_svelte@3.53.1+vite@3.2.3
+      '@sveltejs/kit': 1.0.0-next.543_svelte@3.53.1+vite@3.2.3
       '@types/cookie': 0.5.1
       svelte: 3.53.1
       svelte-check: 2.9.2_svelte@3.53.1
@@ -68,15 +68,15 @@ importers:
       '@astrojs/tailwind': 2.1.2
       astro: 1.6.7
       svelte: 3.53.1
-      tailwindcss: 3.2.3
+      tailwindcss: 3.2.4
       typescript: 4.8.4
       vite: 3.2.3
     dependencies:
       '@astrojs/svelte': 1.0.2_5mtyyj3xge3m3pi7xg247sfpae
-      '@astrojs/tailwind': 2.1.2_tailwindcss@3.2.3
+      '@astrojs/tailwind': 2.1.2_tailwindcss@3.2.4
       astro: 1.6.7
       svelte: 3.53.1
-      tailwindcss: 3.2.3
+      tailwindcss: 3.2.4
       typescript: 4.8.4
       vite: 3.2.3
 
@@ -192,7 +192,7 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind/2.1.2_tailwindcss@3.2.3:
+  /@astrojs/tailwind/2.1.2_tailwindcss@3.2.4:
     resolution: { integrity: sha512-nIrlT+WWp/Wv2VQ29Nvncq608E+j3qB9k1f7yiAjY2ijxizZo4OnQzdRPQcIjIZHL5YxPtzbcoSP2u3v+Domqw== }
     peerDependencies:
       tailwindcss: ^3.0.24
@@ -200,7 +200,7 @@ packages:
       '@proload/core': 0.3.3
       autoprefixer: 10.4.12_postcss@8.4.18
       postcss: 8.4.18
-      tailwindcss: 3.2.3
+      tailwindcss: 3.2.4
     dev: false
 
   /@astrojs/telemetry/1.0.1:
@@ -823,8 +823,8 @@ packages:
     resolution: { integrity: sha512-Z5Z+QZOav6D0KDeU3ReksGERJg/sX1k5OKWWXyQ11OwGErEEwSXHYRUyjaBmZEPeGzpVVGwwMUK8YWJlG/MKeA== }
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.542_svelte@3.53.1+vite@3.2.3:
-    resolution: { integrity: sha512-0YaNfrNsCwgCYuYEEKUF7G/QAkeGNJRlAFnPa9WTG2kRQPqlfUKOJlAniRHVG08ARdfNJgBSootWFvAUsKSoYA== }
+  /@sveltejs/kit/1.0.0-next.543_svelte@3.53.1+vite@3.2.3:
+    resolution: { integrity: sha512-aOd5SX+LPUqe8isXQV7c+XDbi/499Elw2D2igVOya51j26nISptnLmY9KsMBD48Tjl6Va3kUfsa1R1U87vZJRA== }
     engines: { node: '>=16.14' }
     hasBin: true
     requiresBuild: true
@@ -5080,8 +5080,8 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /tailwindcss/3.2.3:
-    resolution: { integrity: sha512-Xt9D4PK4zuuQCEB8bwK9JUCKmTgUwyac/6b0/42Vqhgl6YJkep+Wf5wq+5uXYfmrupdAD0YY2NY1hyZp1HjRrg== }
+  /tailwindcss/3.2.4:
+    resolution: { integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ== }
     engines: { node: '>=12.13.0' }
     hasBin: true
     dependencies:
