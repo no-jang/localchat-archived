@@ -1,5 +1,5 @@
 dependencies {
-    implementation(projects.core)
+    implementation(projects.coreold)
 }
 
 gradlePlugin {
