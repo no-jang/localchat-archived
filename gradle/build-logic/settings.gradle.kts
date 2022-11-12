@@ -17,4 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
+include("module")
 include("node")

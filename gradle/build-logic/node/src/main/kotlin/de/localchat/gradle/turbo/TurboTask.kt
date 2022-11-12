@@ -1,5 +1,6 @@
-package de.localchat.gradle.node
+package de.localchat.gradle.turbo
 
+import de.localchat.gradle.node.NodeTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.ProviderFactory

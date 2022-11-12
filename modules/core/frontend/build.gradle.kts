@@ -1,3 +1,3 @@
 plugins {
-    id("build-logic.node")
+    id("build-logic.module-frontend")
 }
