@@ -15,7 +15,7 @@
     "@types/cookie": "0.5.1",
     "@sveltejs/adapter-static": "1.0.0-next.48",
     "@sveltejs/kit": "1.0.0-next.547",
-    "svelte": "3.53.1",
+    "svelte": "3.54.0",
     "svelte-check": "2.9.2",
     "svelte-preprocess": "4.10.7",
     "tslib": "2.4.1",
